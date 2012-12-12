@@ -1,0 +1,351 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>index3</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="%{CSS_URL}%display.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="header">
+	<div id="logo">
+		<img src="%{IMAGES_URL}%logo.gif" width="134" height="74" border="0" alt="">
+	</div>
+	<div id="nav">
+		<ul>
+			<li><a href="/">首页</a></li>
+            <li><a href="/action">活动</a></li>
+            <li><a href="#">小组</a></li>
+		</ul>
+	</div>
+	<div id="login">
+		%{if empty($user_logout_url)}%
+			<a href="%{$user_login_url}%">登陆</a>
+			<a href="%{$user_regist_url}%" >注册</a>
+		%{else}%
+			你好&nbsp;<a href="%{''|make_url:member:me}%"><b>%{$user_name}%</b></a>&nbsp;&nbsp;<a href="">我的活动</a>
+		%{/if}%
+    </div>
+	<div id="search">
+		<form method="post" action="">
+			<input type="text" name="" value="search">
+			<input type="submit" value="">
+		</form>
+	</div>
+	<div class="clear">	</div>
+</div>
+<div id="mian">
+	<div>
+		<div id="c_left">
+			<div class="content_top">
+				<img src="%{IMAGES_URL}%right_head_bg.jpg" width="11" height="14" border="0" alt="">
+			</div>
+			<div class="left_content">
+				<div id="action_logo">
+					<img src="%{$action_logo}%" alt="">
+				</div>
+				
+				<div id="action_base_info">
+					<h2>%{$action_name}%</h2>
+					<div class="action_info">
+						<span>类型：<a href="">%{$action_type_name}%</a> </span>
+						<span>时间：%{$action_time_str}%</span>  
+						<span>地点：%{$action_address}% </span>
+						<span>主办方：%{$action_host}% </span>
+						<span>发布人：<a href="">%{$action_publisher_name}%</a>%{if $action_publisher_real == 1}%<img src="%{IMAGES_URL}%rel.gif" alt="">%{else}% (还没有实名)%{/if}%</span>
+						<div id="count">
+							<span class="like_num">%{$interest_num}%人感兴趣</span>
+							<span class="join_num">%{$join_num}%人参加</span>
+							<span class="call_num">%{$call_num}%人浏览</span>
+						</div>
+						<div id="user_select">
+							<div class="like">我感兴趣</div>
+							<div class="join">我要参加</div>
+						</div>
+					</div>
+				</div>
+				<div class="clear">	</div>
+				<div >
+					<h3>活动详情</h3>
+					<div id="action_content">
+						%{$action_content}%
+					</div>
+					%{if $check==1}%
+					<h3>活动留言</h3>
+					<div id="review">
+						<form action="%{$id|make_url:action:display}%" method="post">
+							<img class="user" src="%{$user_avatar|get_user_avatar:small}%" id="review_user_pic">
+							<textarea id="review_text" name="content"></textarea>
+							<input type="submit" value="评论" class="submit" >
+						</form>
+						<ul>
+							%{loop $action_leave_info $value}%
+							<li>
+								<div class="leave_image">
+									<span>
+										<a href="%{$value.action_leave_author_id|make_url:action:user}%">
+										<img class="leave_avatar" src="%{if empty($value.author_info.user_avatar)}%%{$value.action_leave_author_id|get_user_avatar:small}%%{else}%%{$value.author_info.user_avatar|get_user_avatar:small}%%{/if}%" width="48px" height="48px"> 
+										</a>
+									</span>
+									<span><a href='%{$value.action_leave_author_id|make_url:action:user}%'>%{$value.action_leave_author}%</a></span>
+								</div>
+								<div class="leave_content">
+									<div class="leave_content_top">
+										<span class="floor">
+											%{template.loop.action_leave_info.loop_num}%楼
+										</span>
+										<span class="ctime">发表于%{$value.action_leave_ctime|ftime:Y-m-d H:i:s}%</span>
+										<span class="replay" onclick='getElementById("replay_leave_%{$value.id}%").style.display="block";'>
+											回复
+										</span>
+									</div>
+									<div class="leave_content_center">
+										%{$value.action_leave_content}%
+									</div>								
+									<div id="replay_leave_%{$value.id}%" style="display:none;">
+										<form method="post" action="">
+											<textarea name="content" class="replay_textarea"></textarea> 
+											<input type="hidden" name="replay_id" value="%{$value.id}%">
+											<input type="submit" value="回复" class="submit" >
+										</form>
+									</div>
+								</div>
+							</li>
+							%{/loop}%
+						</ul>
+					</div>
+					%{/if}%
+				</div>
+			</div>
+			<div class="content_bottom">
+				<img src="%{IMAGES_URL}%bottom_head_bg.jpg" width="19" height="12" style="float:left;" alt="">
+				<img src="%{IMAGES_URL}%bottom_foot_bg.jpg" width="20" height="12" style="float:right;margin-right:1px;" alt="">
+			</div>
+		</div>
+		<div id="c_right">
+			<div class="right_head">
+				<a href="%{'add'|make_url:action}%">我要发布活动</a>
+			</div>
+			<div class="right_body">
+				<div class="right_body_content_right">
+					<div class="right_body_content_right_head"></div>
+					<div class="right_body_content_right_body"></div>
+				</div>
+				<div class="right_body_content">
+					<div class="top"></div>
+					<div class="tag"></div>
+					<div class="content">
+						<div class="right_var_content">
+							<img src="%{IMAGES_URL}%tp.gif" width="48" height="48" border="0" alt="">
+							<span><a href="">社团联合会</a></span>
+							<span>有<a href="">2个活动</a>在进行</span>
+							<div class="clear">	</div>
+						</div>
+						<div class="right_var_content">
+							<img src="%{IMAGES_URL}%tp.gif" width="48" height="48" border="0" alt="">
+							<span><a href="">社团联合会</a></span>
+							<span>有<a href="">2个活动</a>在进行</span>
+							<div class="clear">	</div>
+						</div>
+						<div class="right_var_content">
+							<img src="%{IMAGES_URL}%tp.gif" width="48" height="48" border="0" alt="">
+							<span><a href="">社团联合会</a></span>
+							<span>有<a href="">2个活动</a>在进行</span>
+							<div class="clear">	</div>
+						</div>
+						<div class="right_var_content">
+							<img src="%{IMAGES_URL}%tp.gif" width="48" height="48" border="0" alt="">
+							<span><a href="">社团联合会</a></span>
+							<span>有<a href="">2个活动</a>在进行</span>
+							<div class="clear">	</div>
+						</div>
+						<div class="right_var_content">
+							<img src="%{IMAGES_URL}%tp.gif" width="48" height="48" border="0" alt="">
+							<span><a href="">社团联合会</a></span>
+							<span>有<a href="">2个活动</a>在进行</span>
+							<div class="clear">	</div>
+						</div>
+					</div>
+				</div>
+				<div class="right_body_content_bottom">
+					<div class="right_body_content_bottom_foot"></div>
+					<div class="right_body_content_bottom_body"></div>
+					<div class="right_body_content_bottom_head"></div>
+				</div>
+				<div class="clear">	</div>
+			</div>
+
+			<div class="right_body">
+				<div class="right_body_content_right">
+					<div class="right_body_content_right_head"></div>
+					<div class="right_body_content_right_body"></div>
+				</div>
+				<div class="right_body_content">
+					<div class="top"></div>
+					<div class="tag"></div>
+					<div class="content">
+						<div class="right_var_content">
+							<img src="%{IMAGES_URL}%tp.gif" width="48" height="48" border="0" alt="">
+							<span><a href="">社团联合会</a></span>
+							<span>有<a href="">2个活动</a>在进行</span>
+							<div class="clear">	</div>
+						</div>
+						<div class="right_var_content">
+							<img src="%{IMAGES_URL}%tp.gif" width="48" height="48" border="0" alt="">
+							<span><a href="">社团联合会</a></span>
+							<span>有<a href="">2个活动</a>在进行</span>
+							<div class="clear">	</div>
+						</div>
+						<div class="right_var_content">
+							<img src="%{IMAGES_URL}%tp.gif" width="48" height="48" border="0" alt="">
+							<span><a href="">社团联合会</a></span>
+							<span>有<a href="">2个活动</a>在进行</span>
+							<div class="clear">	</div>
+						</div>
+						<div class="right_var_content">
+							<img src="%{IMAGES_URL}%tp.gif" width="48" height="48" border="0" alt="">
+							<span><a href="">社团联合会</a></span>
+							<span>有<a href="">2个活动</a>在进行</span>
+							<div class="clear">	</div>
+						</div>
+						<div class="right_var_content">
+							<img src="%{IMAGES_URL}%tp.gif" width="48" height="48" border="0" alt="">
+							<span><a href="">社团联合会</a></span>
+							<span>有<a href="">2个活动</a>在进行</span>
+							<div class="clear">	</div>
+						</div>
+					</div>
+				</div>
+				<div class="right_body_content_bottom">
+					<div class="right_body_content_bottom_foot"></div>
+					<div class="right_body_content_bottom_body"></div>
+					<div class="right_body_content_bottom_head"></div>
+				</div>
+				<div class="clear">	</div>
+			</div>
+
+		</div>
+		<div class="clear">	</div>
+	</div>
+</div>
+<div id="hidden_action_info">
+	%{''|make_url:action:like}%|%{$id}%|%{$interest_num}%|%{$join_num}%
+</div>
+%{if ($check==1)}%
+<div id="bigDiv"></div>
+<div class="message_box" id="join_box">
+	<div class="close"><img src="%{IMAGES_URL}%close.gif" alt="close" /></div>
+	<h4>我要报名%{if $is_over == 1}%&nbsp;&nbsp;<font color="#FF0000">该活动已经结束</font> %{/if}%</h4>
+	<hr/>
+    <div id="join_detail">
+        	<form action="%{$id|make_url:action:display}%" method="POST" enctype="multipart/form-data">
+				<input type="hidden" name="join">
+				%{if $action_need_name == 1}%
+            	<p>姓名:<input type="text" name="user_name">
+					<span class="red">*</span>
+					%{if $error_type == "user_name"}%(%{$error_content}%)%{/if}%
+				</p>
+				%{/if}%
+				%{if $action_need_class == 1}%
+				<p>班级:<input type="text" name="user_class">
+					<span class="red">*</span>
+					%{if $error_type == "user_class"}%(%{$error_content}%)%{/if}%
+				</p>
+				%{/if}%
+				%{if $action_need_sex == 1}%
+				<p>性别:<input type="radio" name="user_sex" value="1" checked>男<input type="radio" name="user_sex" value="1">女
+					<span class="red">*</span>
+					%{if $error_type == "user_sex"}%(%{$error_content}%)%{/if}%
+				</p>
+				%{/if}%
+				%{if $action_need_tel == 1}%
+				<p>电话:<input type="text" name="user_tel">
+					<span class="red">*</span>
+					%{if $error_type == "user_tel"}%(%{$error_content}%)%{/if}%
+				</p>
+				%{/if}%
+				%{if $action_need_email == 1}%
+				<p>邮箱:<input type="text" name="user_email">
+					<span class="red">*</span>
+					%{if $error_type == "user_email"}%(%{$error_content}%)%{/if}%
+				</p>
+				%{/if}%
+				
+				%{if $action_need_works == 1}%
+				<p>相关文件:<input type="file" name="user_works">
+					<span class="red">*</span>
+					%{if $error_type == "user_works"}%(%{$error_content}%)%{/if}%
+				</p>
+				%{/if}%
+				<p>附加信息:<br/><textarea name="user_append_info"></textarea></p>
+				<p>注意:<span class="red">*</span>为必填,文件上传只支持小于2M的rar,zip格式的压缩文件</p>
+				<p><input type="submit" value="提交报名信息"></p>
+            </form>
+    </div>
+</div>
+%{/if}%
+</body>
+</html>
+<script src="%{JS_URL}%jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+	
+	function bigDivShow(){
+		var sHeight;
+		if(window.screen.availHeight > document.body.scrollHeight){
+			//当高度少于一屏
+			sHeight = window.screen.availHeight-140;
+		}else{
+			//当高度大于一屏
+			sHeight = document.body.scrollHeight+15;
+		}
+		$("#bigDiv").css("height",sHeight+"px");
+		$("#bigDiv").css("display","block");
+	};
+
+	$(".like").click(function(){
+		%{if (($check == 1)&&($is_over == 0)) }%
+		var hidden_str = $("#hidden_action_info").html();
+		var str_arr = hidden_str.split("|");
+		var action_id = str_arr[1];
+		var ajax_url = str_arr[0];
+		var like_num = str_arr[2];
+		$.getJSON(ajax_url+'?action_id='+action_id, function(data){
+			if(data.result){
+				$(".like_num").html((parseInt(like_num)+1)+"人感兴趣");  
+			}else{
+				alert(data.error);
+			}
+		});
+		%{else}%
+			alert('%{if ($is_over == 1)}%活动已经结束%{else}%活动还没有审核通过%{/if}%,不能喜欢');
+		%{/if}%
+    });
+	%{if (!empty($error_content))}%
+		$(document).ready(function(){
+			bigDivShow();
+			setTimeout(function(){$("#join_box").fadeIn();},500);
+			$(".close").click(function(){
+				$("#join_box").fadeOut();
+				setTimeout(function(){$("#bigDiv").css("display","none");},500);
+			});
+		});
+	%{/if}%
+
+	%{if !empty($join_result)}%
+		$(document).ready(function(){
+			alert("%{$join_result}%");
+		});
+	%{/if}%
+	$(".join").click(function(){
+		%{if (($check==1) && ($is_over == 0))}%
+			bigDivShow();
+			setTimeout(function(){$("#join_box").fadeIn();},500);
+			$(".close").click(function(){
+				$("#join_box").fadeOut();
+				setTimeout(function(){$("#bigDiv").css("display","none");},500);
+			});
+		%{else}%
+			alert('%{if ($is_over == 1)}%活动已经结束%{else}%活动还没有审核通过%{/if}%,不能报名');
+		%{/if}%
+	});
+
+</script>

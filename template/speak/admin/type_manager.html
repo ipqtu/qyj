@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>管理区域</title>
+</head>
+<body>
+	<div>
+		%{loop $type $type_id $type_name}%
+			<span style="border-radius: 3px 3px 3px 3px;color: white;padding: 1px 3px 2px;background: #%{$type_color.$type_id}%;">%{$type_name}%</span>
+		%{/loop}%
+	</div>
+	<div>
+	  <h1>添加</h1>
+	  <hr/>
+	  <form method="post" action="%{'type_manager'|make_url:admin:speak}%">
+		  类型:<input type="text" name="type"><br/>
+		  颜色:<input type="text" name="color"><br/>
+		  <input type="submit" value="添加"><input type="reset">
+	  </form>
+	</div>
+</body>
+</html>
+%{if !empty($alert_info)}%
+<script type="text/javascript">
+<!--
+	alert("%{$alert_info}%");
+//-->
+</script>
+%{/if}%

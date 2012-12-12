@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>管理区域</title>
+</head>
+<style type="text/css">
+	textarea{
+		height: 135px;
+		margin-left: 30px;
+		width: 860px;
+	}
+</style>
+<script type="text/javascript" src="/js/jq.js"></script>	
+<body>
+<div id="man_zone">	
+	<div>
+		<ul>
+		%{loop $about_product $key $product}%
+			<li>%{$product.product_name}%&nbsp;&nbsp;(<a href="?edit=%{$key}%">编辑</a>)&nbsp;&nbsp;(<a href="">删除</a>)</li>
+		%{/loop}%
+		</ul>
+	</div>
+	%{if empty($edit_product)}%
+	<div>
+		<h2>添加</h2><hr/>
+		<form method="post" action="%{'about_product'|make_url:admin:about}%">
+			<p>产品名称:<input type="text" name="product_name"></p>
+			<p>产品描述:<br/><textarea name="product_content" id="product_content"></textarea></p>
+			<p><input type="submit" value="添加" ><input type="reset" ></p>
+		</form>
+	</div>
+	%{else}%
+	<div>
+		<h2>编辑</h2><hr/>
+		<form method="post" action="%{'about_product'|make_url:admin:about}%?edit=%{$edit_profuct_id}%">
+			<p>产品名称:<input type="text" name="product_name" value="%{$edit_product.product_name}%"></p>
+			<p>产品描述:<br/><textarea name="product_content" id="product_content" >%{$edit_product.product_content}%</textarea></p>
+			<p><input type="submit" value="修改" ><input type="reset" ></p>
+		</form>
+	</div>	
+	%{/if}%
+</div>
+</body>
+</html>
+%{if !empty($alert_info)}%
+<script type="text/javascript">
+<!--
+	alert("%{$alert_info}%");
+//-->
+</script>
+%{/if}%
+%{$edit_html}%

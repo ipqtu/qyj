@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>index3</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link href="%{CSS_URL}%add.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<div id="header">
+			<div id="logo">
+				<img src="%{IMAGES_URL}%logo.gif" width="134" height="74" border="0" alt="">
+			</div>
+			<div id="nav">
+				<ul>
+					<li><a href="/">首页</a></li>
+					<li><a href="/action">活动</a></li>
+					<li><a href="#">小组</a></li>
+				</ul>
+			</div>
+			<div id="login">
+			%{if empty($user_logout_url)}%
+				<a href="%{$user_login_url}%">登陆</a>
+				<a href="%{$user_regist_url}%" >注册</a>
+			 %{else}%
+				你好&nbsp;<a href="%{''|make_url:member:me}%"><b>%{$user_name}%</b></a>
+			 %{/if}%
+			</div>
+			<div id="search">
+				<form method="post" action="">
+					<input type="text" name="" value="search">
+					<input type="submit" value="">
+				</form>
+			</div>
+			<div class="clear">	</div>
+		</div>
+		<div id="mian">
+			<h1>发布活动</h1>
+			<hr/>
+			<form method="post" action="%{''|make_url:action:add}%" enctype="multipart/form-data">
+				<span class="add_var">活动名称:<input type="text" name="action_name"></span>
+				<span class="add_var">活动类型:
+					<select name="action_type">
+						%{loop $action_type $type_id $type_name}%
+							<option value="%{$type_id}%">%{$type_name}%
+						%{/loop}%
+					</select>
+				</span>
+				<span class="add_var">活动举办方:<input type="text" name="action_host" value="学生会"></span>
+				<span class="add_var">活动对象:<input type="text" name="action_target"></span>
+				<span class="add_var">活动地址:<input type="text" name="action_address"></span>
+				<span class="add_var">活动时间:<input type="text" name="action_star_time">-<input type="text" name="action_end_time"></span>
+				<span class="add_var">活动海报:<input type="file" name="action_logo"></span>
+				<span class="add_var">活动内容:</span>
+					<textarea id="content" name="content" ></textarea>
+				<span class="add_var">支持网上报名:<input type="checkbox" name="action_online" checked></span>
+				<span class="add_var">参加者需要提交信息:</span>
+				<span style="margin-left:24px;margin-top:12px;display:block;">
+					<input type="checkbox" name="need_user_name" value="1" checked>姓名
+					<input type="checkbox" name="need_user_class" value="1">班级
+					<input type="checkbox" name="need_user_sex" value="1">性别
+					<input type="checkbox" name="need_user_tel" value="1">电话
+					<input type="checkbox" name="need_user_email" value="1">邮箱
+					<input type="checkbox" name="need_user_works" value="1">作品
+				</span>
+				<input type="submit" value="发布活动">
+			</form>
+		</div>
+	</body>
+</html>
+<script type="text/javascript" src="/js/comment/edit/jquery-1.7.min.js"></script>	
+	<link rel="stylesheet" href="/css/comment/edit/redactor.css" />
+	<script src="/js/comment/edit/redactor.js"></script>
+	<script src="/js/comment/edit/zh_cn.js"></script>
+	<script type="text/javascript">
+		$(document).ready(
+			function()
+			{
+				$('#about').redactor({ 	
+					imageUpload: '%{SITE_URL}%/%{APP}%/edit_image_upload.html',
+					fileUpload: '%{SITE_URL}%/%{APP}%/edit_file_upload.html',
+					imageGetJson: '%{SITE_URL}%/%{APP}%/edit_show_upload_image.html',
+					lang: 'zh_cn',
+					css: 'style.css',
+					autoresize: true,
+					fixed: true
+				});
+			}
+		);
+	</script>

@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>index3</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="%{CSS_URL}%publisher.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="header">
+	<div id="logo">
+		<img src="%{IMAGES_URL}%logo.gif" width="134" height="74" border="0" alt="">
+	</div>
+	<div id="nav">
+		<ul>
+			<li><a href="/">首页</a></li>
+            <li><a href="/action">活动</a></li>
+            <li><a href="#">小组</a></li>
+		</ul>
+	</div>
+	<div id="login">
+		%{if empty($user_logout_url)}%
+			<a href="%{$user_login_url}%">登陆</a>
+			<a href="%{$user_regist_url}%" >注册</a>
+		%{else}%
+			你好&nbsp;<a href="%{''|make_url:member:me}%"><b>%{$user_name}%</b></a>&nbsp;&nbsp;<a href="">我的活动</a>
+		%{/if}%
+    </div>
+	<div id="search">
+		<form method="post" action="">
+			<input type="text" name="" value="search">
+			<input type="submit" value="">
+		</form>
+	</div>
+	<div class="clear">	</div>
+</div>
+<div id="mian">
+	<div>
+		<div class="left_nav">
+			<ul>
+				<li %{if $type ==1}%class="t" %{/if}%><a href="%{1|make_url:action:publisher:{$user_action_count->user_id}}%">TA进行的活动</a></li>
+				<li %{if $type ==2}%class="t" %{/if}%><a href="%{2|make_url:action:publisher:{$user_action_count->user_id}}%">TA的全部活动</a></li>
+			</ul>
+		</div>
+		<div id="c_left">
+			<div class="content_top">
+				<img src="%{IMAGES_URL}%right_head_bg.jpg" width="11" height="14" border="0" alt="">
+			</div>
+			<div class="left_content">
+			%{loop $all_actions $action}%
+				<div class="center_action">
+					<div class="action_logo">
+						<img src="%{$action->action_logo}%" alt="">
+					</div>
+					<div class="action_info">
+						<span><h3><a href="%{$action->id|make_url:action:display}%">%{$action->action_name}%</a></h3></span>
+						<span>时间:%{$action->action_time_str}%</span>
+						<span>地点:%{$action->action_address}%</span>
+						<span>类型:<a href="%{$action->action_type_id|make_url:action:index}%">%{$action->action_type_name}%</a></span>
+						<span>发起人:%{$action->action_publisher_name}%</span>
+						<p>有%{$action->call_num}%人看过 有%{$action->interest_num}%人感兴趣 有%{$action->join_num}%人参加 有%{$action->leave_num}%人留言<br/>
+						%{if $type ==3}%<a href="%{$action->id|make_url:action:manager}%">查看结果</a> <a href="">删除</a> <a href="">编辑</a>%{/if}%</p>
+					</div>
+					<div class="clear">	</div>
+				</div>
+			%{loopelse}%
+				 还没有相关的活动
+			%{/loop}%
+			</div>
+			<div class="content_bottom">
+				<img src="%{IMAGES_URL}%bottom_head_bg.jpg" width="19" height="12" style="float:left;" alt="">
+				<img src="%{IMAGES_URL}%bottom_foot_bg.jpg" width="20" height="12" style="float:right;margin-right:1px;" alt="">
+			</div>
+		</div>
+		<div id="c_right">
+			<div class="right_head">
+				<div class="content_top">
+					<img src="%{IMAGES_URL}%right_head_bg.jpg" width="11" height="14" border="0" alt="">
+				</div>
+				<div class="user_info">
+					<img src="%{$user_action_count->user_id|get_user_avatar:middle}%" width="120" height="120" border="0" alt="">
+					<div class="about_user">
+						%{$user_action_count->user_name}%
+						<div>
+							<a id="add_friends" title="加为好友" href="javascript:return false;">加为好友</a><br/>
+							<a href="%{$user_action_count->user_id|make_url:member:send_message}%"  title="发信息给我吧">私信</a>
+						</div>
+					</div>
+					<div class="clear">	</div>
+					<div class="user_action_count">进行活动(%{$user_action_count->new_action_num}%)&nbsp;&nbsp;|&nbsp;&nbsp;全部活动(%{$user_action_count->action_num}%)</div>
+				</div>
+				<div class="content_bottom">
+					<img src="%{IMAGES_URL}%bottom_head_bg.jpg" width="19" height="12" style="float:left;" alt="">
+					<img src="%{IMAGES_URL}%bottom_foot_bg.jpg" width="20" height="12" style="float:right;margin-right:1px;" alt="">
+				</div>
+			</div>	
+			<div class="right_body_content">
+				<div class="content_top">
+					<img src="%{IMAGES_URL}%right_head_bg.jpg" width="11" height="14" border="0" alt="">
+				</div>
+				<div class="tag"></div>
+				<div class="right_var_contents">
+					<div class="right_var_content">
+						<img src="%{IMAGES_URL}%tp.gif" width="48" height="48" border="0" alt="">
+						<span><a href="">社团联合会</a></span>
+						<span>有<a href="">2个活动</a>在进行</span>
+						<div class="clear">	</div>
+					</div>
+				</div>
+				<div class="content_bottom">
+					<img src="%{IMAGES_URL}%bottom_head_bg.jpg" width="19" height="12" style="float:left;" alt="">
+					<img src="%{IMAGES_URL}%bottom_foot_bg.jpg" width="20" height="12" style="float:right;margin-right:1px;" alt="">
+				</div>
+			</div>
+		</div>
+		<div class="clear">	</div>
+	</div>
+</div>
+</body>
+</html>
+<script src="%{JS_URL}%jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+<!--
+	$("#add_friends").click(function(){
+		$.ajax({
+			type: "GET",
+			url: "/member/add_friends.html",
+			data: "friend_id="+%{$user_action_count->user_id}%,
+			success: function(msg){
+				alert(msg );
+			}
+		});
+	});
+//-->
+</script>

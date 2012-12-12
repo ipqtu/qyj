@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">	
+	<title>%{$title}%</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="%{CSS_URL}%combined.min.css">
+	<!--[if lt IE 9]>
+	<script src="%{JS_URL}%html5.js"></script>
+	<![endif]-->
+</head>
+<body>
+<div id="top">
+	<div id="top_inner">
+		<div id="logo"><a href="%{SITE_URL}%">趣友街</a></div>
+		<ul id="appendix">			
+			<li id="maillink"></li>
+			<li><a href="%{SITE_URL}%/photo" title="图片分享">图片分享</a></li>
+			<li><a href="%{SITE_URL}%/action" title="活动公告">活动公告</a></li>
+		</ul>
+	</div>
+</div>
+<div class="wrapper">
+	<div id="page">
+		<header id="header">
+			<h3><a href="%{SITE_URL}%">趣友街</a></h3>
+			<nav id="nav">
+				<ul>
+					<li>%{if $type == 0}%<span>关于我们</span>%{else}%<a href="%{SITE_URL}%/about/index.html">关于我们</a>%{/if}%</li>
+					<li>%{if $type == 1}%<span>网站介绍</span>%{else}%<a href="%{SITE_URL}%/about/product.html">网站介绍</a>%{/if}%</li>
+					<li>%{if $type == 2}%<span>网站动态</span>%{else}%<a href="%{SITE_URL}%/about/news_show.html">网站动态</a>%{/if}%</li>
+					<li>%{if $type == 3}%<span>意见反馈</span>%{else}%<a href="%{SITE_URL}%/about/contact_us.html">意见反馈</a>%{/if}%</li>
+					<li>%{if $type == 4}%<span>加入我们</span>%{else}%<a href="%{SITE_URL}%/about/join_us.html">加入我们</a>%{/if}%</li>
+				</ul>
+			</nav>		
+		</header>
+		<div id="main" class="row">

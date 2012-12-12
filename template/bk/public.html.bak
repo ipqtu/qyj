@@ -1,0 +1,30 @@
+%{template bk/header}%
+<style type="text/css">
+	#bk_public p{
+		
+	}
+</style>
+<article>
+	<header>
+      <h1>发布百科</h1>
+    </header>
+    <section id="bk_public">
+		<div>
+			<form method="post" action="?">
+				<p>百科名称&nbsp;:&nbsp;&nbsp;<input type="text" name="title"></p>
+				<p>百科类型&nbsp;:&nbsp;&nbsp;
+					<select name="type_id">
+						%{loop $types $key $type}%
+							<option value="%{$key}%">%{$type}%</option>
+						%{/loop}%
+					</select>
+				</p>
+				<p>百科内容&nbsp;:<br/><textarea name="content" id="content" style="height:100px;" ></textarea></p>
+				<p><input type="submit" class="sub_buttom" value="提交"><input type="reset" class="sub_buttom" value="取消"></p>
+			</form>
+		</div>
+     </section>
+</article>
+%{template bk/footer}%
+<script src="/js/jq.js"></script>
+%{$edit_html}%

@@ -1,0 +1,31 @@
+<div id="header">
+	<div id="header_inner">
+		<div id="logo"><a href="http://www.quyoujie.com">趣友街</a></div>
+		<ul id="appendix">			
+			<li id="maillink"></li>
+			<li><a href="%{SITE_URL}%/photo" title="图片分享">图片分享</a></li>
+			<li><a href="%{SITE_URL}%/action" title="活动公告">活动公告</a></li>
+			<li><a href="%{SITE_URL}%/know" title="活动公告">校园问问</a></li>
+		</ul>
+	</div>
+</div>
+<div id="body">
+	<div id="top">
+		<h1>趣友街知道</h1>
+		<form method="post" action="%{'search'|make_url:know}%">
+			<div style="margin-top:20px;margin-bottom:20px;">
+			<div><input type="text" name="search" style="width: 90%;margin:auto auto;padding-top:10px;padding-bottom:10px;"></div>
+			<div style="margin-top:10px;">
+				<input type="submit" value="搜索问题" style="padding:1px;height:40px;width:120px;">
+				<input type="button" value="我要发布问题" style="padding:1px;height:40px;width:120px;" onclick="document.location.href='%{'public'|make_url:know}%'">
+			</div>
+		</div>
+		</form>
+		<div>
+			<a href="%{SITE_URL}%/know">首页</a>
+			%{loop $app_cache.type $type_id $type_value}%
+				|&nbsp;&nbsp;<a href="%{$type_id|make_url:know:type}%">%{$type_value}%</a>
+			%{/loop}%
+			|&nbsp;&nbsp;<a href="%{'my'|make_url:know}%">我的问问</a>
+		</div>
+	</div>

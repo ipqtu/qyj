@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf8">
+	<title>趣友街--校园帮</title>
+	<link rel="stylesheet" media="screen" href="%{CSS_URL}%header.css" />
+	<style type="text/css">
+		#content .item{
+			border-bottom:1px dashed #e3e3e3;
+			padding-bottom:20px;
+			padding-top:20px;
+			padding-left:20px;
+			background-color:white;
+		}
+		#content .item .title{
+			float:left;
+			width:70%;
+		}
+		#content .item .author{
+			text-align:center;
+			float:left;
+			width:10%;
+		}
+		#content .item .price{
+			background: url(%{IMAGES_URL}%price.png) no-repeat;
+			padding-left:12px;
+			font-size: 13px;
+			margin-left:10px;
+		}
+		.cur_nav{
+			padding-top:15px;
+			padding-bottom:25px;
+			padding-left:20px;
+			margin-bottom:20px;
+			background-color: white;
+			-webkit-border-radius: 6px;
+			-moz-border-radius: 6px;
+			border-radius: 6px;
+		}
+		.list{
+			padding:10px;
+			background-color: white;
+			-webkit-border-radius: 6px;
+			-moz-border-radius: 6px;
+			border-radius: 6px;
+		}
+	</style>
+</head>
+<body>
+	%{template know/header}%
+		<div id="content">
+			<div class="cur_nav">首页>>%{$app_cache.type.$type_id}%</div>
+			<div class="list">
+				<div class="item">
+						<div class="title"">问题</div>
+						<div class="author">提问人</div>
+						<div class="author">查看/回复</div>
+						<div class="author">发布时间</div>
+						<div style="clear:both;"></div>
+				</div>
+				%{loop $questions $question}%
+					<div class="item">
+						<div class="title"><a href="%{$question->id|make_url:know:question}%">%{$question->title}%</a><span class="price" >%{$question->spend_credits}%</span>
+						</div>
+						<div class="author">%{$question->author_name}%</div>
+						<div class="author">%{$question->call_num}%/%{$question->answer_num}%</div>
+						<div class="author">%{$question->ctime|ftime:Y-m-d}%</div>
+						<div style="clear:both;"></div>
+					</div>
+				%{loopelse}%
+					<div class="item">
+						<p align="center">暂无相关问题</p>
+					</div>
+				%{/loop}%
+				<div>
+					%{$page_html}%
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

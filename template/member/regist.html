@@ -1,0 +1,59 @@
+	%{template member/header}%
+		<form accept-charset="UTF-8" action="%{$_USER.user_regist_url}%" class="new_user" id="new_user" method="post">
+			<div class="signuploginbg">
+				<div class="signuplogin">
+					<div class="left">
+						<ul class="siglog">
+							<li class="linh2">
+								<span>已是趣友街会员！<a href="%{$_USER.user_login_url}%">登录</a></span>注册
+							</li>
+							<li>
+								<div id="username" class="inputboxes username">
+									<label for="user_name" style="display: none; ">用户名</label>
+									<input autocomplete="off" id="user_name" name="user_login" size="30" type="text" value="">
+									<span class="usernamer">中英文、数字、下划线及减号</span>
+								</div>
+							</li>
+							<li>
+								<div id="userpassword" class="inputboxes userpassword">
+									<label for="user_password" style="display: block; ">密 码</label>
+									<input autocomplete="off" id="user_password" name="password" size="30" type="password">
+									<span class="passwordr">至少6个字符</span>
+								</div>
+							</li>
+							<li>
+								<div id="useremail" class="inputboxes useremail">
+									<label for="user_email" style="display: block; ">邮 箱</label>
+									<input autocomplete="off" id="user_email" name="user_email" size="30" type="text">
+								</div>
+							</li>
+							<li class="service_login">
+								<a href="#" target="_blank">趣友街服务条款</a>
+							</li>
+							<li class="zhuce_login">
+								<div><input type="submit" class="button noprogress" value=""><span></span></div>
+							</li>
+							<li class="edm_login">
+								<input name="user[weekly_newsletters]" type="hidden" value="0">
+							</li>
+						</ul>
+					</div>
+					<div class="right">
+						<ul class="siglog">
+							<li class="linh2">快速通过微博帐号登录</li>
+							<li class="weibodl">
+								<a href="%{''|make_url:member:thirdlogin:renren}%" rel="nofollow"><img src="%{IMAGES_URL}%renren.png" title="人人网"></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</form>
+%{template member/footer}%
+	%{if !empty($error)}%
+		<script type="text/javascript">
+			<!--
+				alert("%{$error}%");
+			//-->
+		</script>
+	%{/if}%

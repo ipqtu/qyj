@@ -1,0 +1,52 @@
+	%{template member/header}%
+	<div class="topshow">
+			<div class="topshowmenu">
+				<div class="topshowtitle">我的趣友街</div>
+					<ul class="topmenutabs">
+						<li><a %{if $type == 0}% class="current" %{/if}% href="%{''|make_url:member:me}%" title="个人资料">个人资料</a> </li>
+						<li><a %{if $type == 1}% class="current" %{/if}% href="%{''|make_url:member:password}%" title="密码修改">密码修改</a></li>
+						<li><a %{if $type == 2}% class="current" %{/if}% href="%{''|make_url:member:message}%" title="我的消息">我的消息</a></li>
+						<li><a %{if $type == 3}% class="current" %{/if}% href="%{''|make_url:member:friends}%" title="我的好友">我的好友</a></li>
+					</ul>
+				</div>
+			</div>
+
+		<div class="content">
+				%{if empty($error)}%
+				<div>收件人:%{$accept_user.user_name}%</div>
+				<div class="said_img1">
+                    <a><img src="%{$user_avatar|get_user_avatar:small}%" width="50" height="50"></a>
+                </div>
+				<div class="said_frame1">
+                        <div class="f1_top_a">
+                            <div class="f1_top_b">
+                                <div class="f1_top_c">
+                                    &nbsp;
+                                </div>
+                            </div>
+                        </div>
+						<form method="post" action="?">
+                        <div class="f1_body_a">
+                            <div class="f1_body_b">
+								<input type="hidden" name="message_id" value="%{$message_id}%">
+                                <textarea id="cont" name="content"></textarea>
+                            </div>
+                        </div>
+                        <div id="submit" style="margin-left: 6px;">
+                            <input class="submit" type="submit" value="提交" name="commit">
+                        </div>
+						 </form>
+                        <div class="f1_bot_a">
+                            <div class="f1_bot_b">
+                                <div class="f1_bot_c">
+                                    &nbsp;
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cb"></div>
+			   </div>
+			  %{else}%
+					%{$error}%
+			  %{/if}%
+		</div>
+%{template member/footer}%

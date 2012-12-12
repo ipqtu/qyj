@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="%{CSS_URL}%common.css" type="text/css" />
+<title>管理区域</title>
+</head>
+
+<body>
+<div id="man_zone">	
+	<table width="99%" border="0" align="center"  cellpadding="3" cellspacing="1" class="table_style">
+		<tr>
+			<td width="18%" class="left_title_2">用户名</td>
+			<td width="18%" class="left_title_2">邮箱</td>
+			<td width="18%" class="left_title_2">注册时间</td>
+			<td class="left_title_2">状态</td>
+			<td class="left_title_2">管理</td>
+		</tr>
+	%{loop $users $one_user}%
+		<tr>
+			<td width="18%" class="left_title_2">%{$one_user->user_name}%</td>
+			<td width="28%" class="left_title_2">%{$one_user->user_email}%</td>
+			<td width="18%" class="left_title_2">%{$one_user->user_registered}%</td>
+			<td class="left_title_2">%{if $one_user->user_status == 1 }%<font color="#6699FF">未激活</font>%{elseif $one_user->user_status == 2}%<font color="#33FF99">正常</font>%{elseif $one_user->user_status == 3}%<font color="#FF0000">屏蔽</font>%{/if}%</td>
+			<td><a href="%{$one_user->id|make_url:admin:member:member_edit}%">编辑</a>|<a href="%{$one_user->id|make_url:admin:member:show_all_member:del}%?page=%{$page}%">删除</a>|
+			%{if $one_user->user_status == 3}%<a href="%{$one_user->id|make_url:admin:member:show_all_member:normal}%?page=%{$page}%"><font color="#33FF99">正常</font></a>%{else}%<a href="%{$one_user->id|make_url:admin:member:show_all_member:shield}%?page=%{$page}%">屏蔽</a>%{/if}%</td>
+		</tr>
+	%{/loop}%
+	</table>
+	<p>%{$page_html}%</p>
+</div>
+</body>
+</html>
+%{if !empty($alert_info)}%
+<script type="text/javascript">
+<!--
+	alert("%{$alert_info}%");
+//-->
+</script>
+%{/if}%

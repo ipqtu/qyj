@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>趣友街百科</title>
+<meta name="keywords" content="趣友街,趣友,www.quyoujie.com,趣友街团队,中国矿业大学,数字化校园,矿大数字化校园" />
+<meta name="description" content="趣友街网站是以服务学生为宗旨，采用网络虚拟化大学生校园的方法，虚拟大学生周围的生活学习环境，为大学生提供更加方便快捷的服务，我们网站做到更加本地化，更加人性化，网站项目更加的贴近大学生的生活，为大学打造一个学习和生活的网络平台。" />
+</head>
+ <link rel="stylesheet" href="%{CSS_URL}%common.css">
+ <!--[if lt IE 9]>
+	<script src="/js/about/html5.js"></script>
+	<![endif]-->
+
+<body>
+<div id="header">
+	<div id="header_inner">
+		<div id="logo"><a href="%{SITE_URL}%">趣友街</a></div>
+		<ul id="appendix">			
+			<li id="maillink"></li>
+			<li><a href="%{SITE_URL}%/photo" title="图片分享">图片分享</a></li>
+			<li><a href="%{SITE_URL}%/action" title="活动公告">活动公告</a></li>
+			<li><a href="%{SITE_URL}%/know" title="活动公告">校园问问</a></li>
+		</ul>
+	</div>
+</div>
+<div id="support">
+
+    <div class="container">
+
+      <!-- Header -->
+      <header>
+
+        <!-- Icon -->
+        <img id="icon" src="%{IMAGES_URL}%icon-160.png" width="160" height="160" alt="">
+
+        <!-- Primary Navigation -->
+        <nav>
+          <ul>
+			%{loop $types $key $type}%
+				<li><a href="%{$key|make_url:bk:type}%">%{$type}%</a></li>
+			%{/loop}%
+			<!-- <li class="active">Support</li> -->
+          </ul>
+        </nav>
+
+      </header>
+
+      <article>
+
+        <header>
+          <h1>Support</h1>
+        </header>
+
+        <p>
+          There are many ways to obtain support for PushDialer. First off, we
+          recommend looking for answers to your questions in our
+          <a href="http://pushdialer.com/faq.html">FAQ</a> and our
+          <a href="http://support.pushdialer.com/">community support site</a>,
+          hosted by Get Satisfaction.
+        </p>
+
+        <p>
+          If you are unable to find the answer to your question, please feel
+          free to use one of the following methods for support:
+        </p>
+
+        <section id="twitterSupport">
+          <header>
+            <h1>Send Us a Tweet or Direct Message on Twitter</h1>
+          </header>
+          <p>
+            If your question is simple and fits in 140 characters or less,
+            please send a tweet or direct message to
+            <a href="http://twitter.com/PushDialer">@PushDialer</a> on
+            Twitter. This is the fastest way for us to provide answers to you.
+            We try to respond to inquiries on Twitter within 24 hours.
+          </p>
+        </section>
+
+        <section id="emailSupport">
+          <header>
+            <h1>Send Us an E-mail</h1>
+          </header>
+          <p>
+            If your question or issue is more complicated than is suitable for
+            Twitter, feel free to e-mail us at
+            <a href="mailto:support@pushdialer.com">support@pushdialer.com</a>.
+            We try to respond to all e-mails within 24 to 48 hours, but please
+            be patient on weekends and around holidays.
+          </p>
+        </section>
+
+        <section id="getSatisfaction">
+          <header>
+            <h1>Participate on Get Satisfaction</h1>
+          </header>
+          <p>
+            If you have a feature request or would prefer to take your issue
+            to our community, you may use our
+            <a href="http://support.pushdialer.com/">community support site</a>
+            hosted by Get Satisfaction. We may not always answer questions
+            posted to this site in a timely fashion, so if your question or
+            issue is urgent, please e-mail or send a tweet to us first.
+          </p>
+        </section>
+
+      </article>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>
+        © 2009-2012 Push Dialer, LLC. All Rights Reserved.
+        <a href="mailto:support@pushdialer.com">Contact Us</a>
+      </p>
+      <p>
+        Apple, the Apple logo, iPod, and iTunes are trademarks of Apple
+        Inc., registered in the U.S. and other countries. iPhone is a
+        trademark of Apple Inc.
+      </p>
+    </footer>
+
+</body>
+</html>

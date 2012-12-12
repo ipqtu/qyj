@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf8">
+	<title>趣友街--校园帮</title>
+	<link rel="stylesheet" media="screen" href="%{CSS_URL}%header.css" />
+	<link rel="stylesheet" media="screen" href="%{CSS_URL}%index.css" />
+</head>
+<body>
+	%{template know/header}%
+			<div id="content">
+				%{loop $index_show_question $nav_id $questions}%
+					<div class="js-tx">
+						<dl class="tx-%{template.loop.index_show_question.loop_num}%">
+							<dt><a href="%{$index_nav_type.$nav_id|make_url:know:type}%" target="_blank">更多&gt;&gt;</a></dt>
+							 <a href="%{$index_nav_type.$nav_id|make_url:know:type}%" target="_blank"><p></p></a>
+							 %{loop $questions $question}%
+								<dd><a href="%{$question->id|make_url:know:question}%" target="_blank">%{$question->title}%</a></dd>
+							%{/loop}%
+						</dl>		
+					</div>
+				%{/loop}%
+				<div class="clear"></div>
+			</div>
+		</div>
+	</body>
+</html>

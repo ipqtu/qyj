@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="%{CSS_URL}%common.css" type="text/css" />
+<title>管理区域</title>
+</head>
+<style type="text/css">
+	textarea{
+		height: 135px;
+		margin-left: 30px;
+		width: 860px;
+	}
+</style>
+<body>
+<div id="man_zone">	
+	<form method="post" action="%{$speak_info->id|make_url:admin:speak:edit_speak}%">
+		<p>标题:<input type="text" name="title" value="%{$speak_info->title}%"></p>
+		<p>分类:
+			<select name="type">
+				%{loop $type $type_key $type_value}%
+					<option value="%{$type_key}%" %{if $speak_info->type == $type_key}%selected%{/if}%>%{$type_value}%
+				%{/loop}%
+			</select>
+		</p>
+		<p>内容:<br/><textarea name="content">%{$speak_info->content}%</textarea></p>
+		<p><input type="submit" value="编辑" ><input type="reset" ></p>
+	</form>
+</div>
+</body>
+</html>
+%{if !empty($alert_info)}%
+<script type="text/javascript">
+<!--
+	alert("%{$alert_info}%");
+//-->
+</script>
+%{/if}%

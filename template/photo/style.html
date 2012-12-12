@@ -1,0 +1,227 @@
+%{if $style == 0}%
+	<div class="t">
+        	<div class="large left r clearfix">
+				%{if empty($photos.0->photo_url)}%
+            		<img src="%{HTML_UPLOAD_URL}%default.jpg"/>
+					<p>等你上传哦!!</p>
+				%{else}%
+					<a target='_blank' href="%{$photos.0->id}%"><img src="%{HTML_UPLOAD_URL}%%{$photos.0->photo_url}%"/></a>
+					<p>%{$photos.0->photo_name}%<span style='float:right;margin-right:5%;'>by&nbsp;&nbsp;<a target='_blank' href='%{$photos.0->photo_author_id|make_url:photo:user}%'>%{$photos.0->photo_author}%</a></span></p>
+				%{/if}%
+            </div>
+            <div class="left">
+            	<div class="wide b">
+                    <div id="upload">
+                    	%{if $_USER.user_login == 1}%<h3 id="myUpload">上传我的作品</h3>%{else}%<h3>登录才可以上传作品哦^_^</h3>%{/if}%
+                        <a id="jiang" >4月30日前上传作品就有可能获得丰厚大奖，活动详情>></a>
+                    </div>
+                </div>
+            </div>
+            <div class="small left r">
+				%{if empty($photos.1->photo_url)}%
+            		<img src="%{HTML_UPLOAD_URL}%default.jpg"/>
+					<p>等你上传哦!!</p>
+				%{else}%
+					<a target='_blank' href="%{$photos.1->id}%"><img src="%{HTML_UPLOAD_URL}%%{$photos.1->photo_url}%" /></a>
+					<p>%{$photos.1->photo_name}%<span style='float:right;margin-right:5%;'>by&nbsp;&nbsp;<a target='_blank' href='%{$photos.1->photo_author_id|make_url:photo:user}%'>%{$photos.1->photo_author}%</a></span></p>
+				%{/if}%
+            </div>
+            <div class="small left">
+				%{if empty($photos.2->photo_url)}%
+            		<img src="%{HTML_UPLOAD_URL}%default.jpg"/>
+					<p>等你上传哦!!</p>
+				%{else}%
+					<a target='_blank' href="%{$photos.2->id}%"><img src="%{HTML_UPLOAD_URL}%%{$photos.2->photo_url}%" /></a>
+					<p>%{$photos.2->photo_name}%<span style='float:right;margin-right:5%;'>by&nbsp;&nbsp;<a target='_blank' href='%{$photos.2->photo_author_id|make_url:photo:user}%'>%{$photos.2->photo_author}%</a></span></p>
+				%{/if}%
+            </div>
+        </div>
+%{elseif $style == 1}%
+	<div class="t clearfix">
+        	<div class="left r">
+            	<div class="small b">
+					%{if empty($photos.0->photo_url)}%
+						<img src="%{HTML_UPLOAD_URL}%default.jpg"/>
+						<p>等你上传哦!!</p>
+					%{else}%
+						<a target='_blank' href="%{$photos.0->id}%"><img src="%{HTML_UPLOAD_URL}%%{$photos.0->photo_url}%" /></a>
+						<p>%{$photos.0->photo_name}%<span style='float:right;margin-right:5%;'>by&nbsp;&nbsp;<a target='_blank' href='%{$photos.0->photo_author_id|make_url:photo:user}%'>%{$photos.0->photo_author}%</a></span></p>
+					%{/if}%
+                </div>
+                <div class="small">
+					%{if empty($photos.1->photo_url)}%
+						<img src="%{HTML_UPLOAD_URL}%default.jpg"/>
+						<p>等你上传哦!!</p>
+					%{else}%
+						<a target='_blank' href="%{$photos.1->id}%"><img src="%{HTML_UPLOAD_URL}%%{$photos.1->photo_url}%" /></a>
+						<p>%{$photos.1->photo_name}%<span style='float:right;margin-right:5%;'>by&nbsp;&nbsp;<a target='_blank' href='%{$photos.1->photo_author_id|make_url:photo:user}%'>%{$photos.1->photo_author}%</a></span></p>
+					%{/if}%
+                </div>
+          </div>
+            <div class="left large r">
+				%{if empty($photos.2->photo_url)}%
+						<img src="%{HTML_UPLOAD_URL}%default.jpg"/>
+						<p>等你上传哦!!</p>
+				%{else}%
+					<a target='_blank' href="%{$photos.2->id}%"><img src="%{HTML_UPLOAD_URL}%%{$photos.2->photo_url}%" /></a>
+					<p>%{$photos.2->photo_name}%<span style='float:right;margin-right:5%;'>by&nbsp;&nbsp;<a target='_blank' href='%{$photos.2->photo_author_id|make_url:photo:user}%'>%{$photos.2->photo_author}%</a></span></p>
+				%{/if}%
+            </div>
+            <div class="left tall">
+				%{if empty($photos.3->photo_url)}%
+						<img src="%{HTML_UPLOAD_URL}%default.jpg"/>
+						<p>等你上传哦!!</p>
+				%{else}%
+					<a target='_blank' href="%{$photos.3->id}%"><img src="%{HTML_UPLOAD_URL}%%{$photos.3->photo_url}%" /></a>
+					<p>%{$photos.3->photo_name}%<span style='float:right;margin-right:5%;'>by&nbsp;&nbsp;<a target='_blank' href='%{$photos.3->photo_author_id|make_url:photo:user}%'>%{$photos.3->photo_author}%</a></span></p>
+				%{/if}%
+            </div>
+       </div>
+%{elseif $style == 2}%
+	 <div class="t clearfix">
+        <div class="left tall r">
+				%{if empty($photos.0->photo_url)}%
+						<img src="%{HTML_UPLOAD_URL}%default.jpg"/>
+						<p>等你上传哦!!</p>
+				%{else}%
+					 <a target='_blank' href="%{$photos.0->id}%"><img src="%{HTML_UPLOAD_URL}%%{$photos.0->photo_url}%" /></a>
+					 <p>%{$photos.0->photo_name}%<span style='float:right;margin-right:5%;'>by&nbsp;&nbsp;<a target='_blank' href='%{$photos.0->photo_author_id|make_url:photo:user}%'>%{$photos.0->photo_author}%</a></span></p>
+				%{/if}%
+         </div>
+         <div class="left r">
+				<div class="wide b">
+					%{if empty($photos.1->photo_url)}%
+							<img src="%{HTML_UPLOAD_URL}%default.jpg"/>
+							<p>等你上传哦!!</p>
+					%{else}%
+						<a target='_blank' href="%{$photos.1->id}%"><img src="%{HTML_UPLOAD_URL}%%{$photos.1->photo_url}%" /></a>
+						<p>%{$photos.1->photo_name}%<span style='float:right;margin-right:5%;'>by&nbsp;&nbsp;<a target='_blank' href='%{$photos.1->photo_author_id|make_url:photo:user}%'>%{$photos.1->photo_author}%</a></span></p>
+					%{/if}%
+                </div>
+
+                <div class="wide">
+					%{if empty($photos.2->photo_url)}%
+						<img src="%{HTML_UPLOAD_URL}%default.jpg"/>
+						<p>等你上传哦!!</p>
+					%{else}%
+						<a target='_blank' href="%{$photos.2->id}%"><img src="%{HTML_UPLOAD_URL}%%{$photos.2->photo_url}%" /></a>
+						<p>%{$photos.2->photo_name}%<span style='float:right;margin-right:5%;'>by&nbsp;&nbsp;<a target='_blank' href='%{$photos.2->photo_author_id|make_url:photo:user}%'>%{$photos.2->photo_author}%</a></span></p>
+					%{/if}%
+                </div>
+
+            </div>
+            <div class="left tall">
+				%{if empty($photos.3->photo_url)}%
+						<img src="%{HTML_UPLOAD_URL}%default.jpg"/>
+						<p>等你上传哦!!</p>
+				%{else}%
+            		<a target='_blank' href="%{$photos.3->id}%"><img src="%{HTML_UPLOAD_URL}%%{$photos.3->photo_url}%" /></a>
+					<p>%{$photos.3->photo_name}%<span style='float:right;margin-right:5%;'>by&nbsp;&nbsp;<a target='_blank' href='%{$photos.3->photo_author_id|make_url:photo:user}%'>%{$photos.3->photo_author}%</a></span></p>
+				%{/if}%
+            </div>
+       </div>
+%{elseif $style == 3}%
+       <div class="t clearfix">
+        	<div class="left r">
+            	<div class="small b">
+                   %{if empty($photos.0->photo_url)}%
+						<img src="%{HTML_UPLOAD_URL}%default.jpg"/>
+						<p>等你上传哦!!</p>
+					%{else}%
+						<a target='_blank' href="%{$photos.0->id}%"><img src="%{HTML_UPLOAD_URL}%%{$photos.0->photo_url}%" /></a>
+						<p>%{$photos.0->photo_name}%<span style='float:right;margin-right:5%;'>by&nbsp;&nbsp;<a target='_blank' href='%{$photos.0->photo_author_id|make_url:photo:user}%'>%{$photos.0->photo_author}%</a></span></p>
+					%{/if}%
+                </div>
+                <div class="small">
+                    %{if empty($photos.1->photo_url)}%
+						<img src="%{HTML_UPLOAD_URL}%default.jpg"/>
+						<p>等你上传哦!!</p>
+					%{else}%
+						<a target='_blank' href="%{$photos.1->id}%"><img src="%{HTML_UPLOAD_URL}%%{$photos.1->photo_url}%" /></a>
+						<p>%{$photos.1->photo_name}%<span style='float:right;margin-right:5%;'>by&nbsp;&nbsp;<a target='_blank' href='%{$photos.1->photo_author_id|make_url:photo:user}%'>%{$photos.1->photo_author}%</a></span></p>
+					%{/if}%
+                </div>
+          </div>
+          <div class="left r">
+            	<div class="small b">
+                    %{if empty($photos.2->photo_url)}%
+						<img src="%{HTML_UPLOAD_URL}%default.jpg"/>
+						<p>等你上传哦!!</p>
+					%{else}%
+						<a target='_blank' href="%{$photos.2->id}%"><img src="%{HTML_UPLOAD_URL}%%{$photos.2->photo_url}%" /></a>
+						<p>%{$photos.2->photo_name}%<span style='float:right;margin-right:5%;'>by&nbsp;&nbsp;<a target='_blank' href='%{$photos.2->photo_author_id|make_url:photo:user}%'>%{$photos.2->photo_author}%</a></span></p>
+					%{/if}%
+                </div>
+                <div class="small">
+                    %{if empty($photos.3->photo_url)}%
+						<img src="%{HTML_UPLOAD_URL}%default.jpg"/>
+						<p>等你上传哦!!</p>
+					%{else}%
+						<a target='_blank' href="%{$photos.3->id}%"><img src="%{HTML_UPLOAD_URL}%%{$photos.3->photo_url}%" /></a>
+						<p>%{$photos.3->photo_name}%<span style='float:right;margin-right:5%;'>by&nbsp;&nbsp;<a target='_blank' href='%{$photos.3->photo_author_id|make_url:photo:user}%'>%{$photos.3->photo_author}%</a></span></p>
+					%{/if}%
+                </div>
+          </div>
+            <div class="left large">
+            	%{if empty($photos.4->photo_url)}%
+						<img src="%{HTML_UPLOAD_URL}%default.jpg"/>
+						<p>等你上传哦!!</p>
+				%{else}%
+					 <a target='_blank' href="%{$photos.4->id}%"><img src="%{HTML_UPLOAD_URL}%%{$photos.4->photo_url}%" /></a>
+					 <p>%{$photos.4->photo_name}%<span style='float:right;margin-right:5%;'>by&nbsp;&nbsp;<a target='_blank' href='%{$photos.4->photo_author_id|make_url:photo:user}%'>%{$photos.4->photo_author}%</a></span></p>
+				%{/if}%
+            </div>
+       </div>
+%{elseif $style == 4}%
+       <div class="t clearfix">
+       		<div class="left large r">
+            	%{if empty($photos.0->photo_url)}%
+						<img src="%{HTML_UPLOAD_URL}%default.jpg"/>
+						<p>等你上传哦!!</p>
+				%{else}%
+					 <a target='_blank' href="%{$photos.0->id}%"><img src="%{HTML_UPLOAD_URL}%%{$photos.0->photo_url}%" /></a>
+					 <p>%{$photos.0->photo_name}%<span style='float:right;margin-right:5%;'>by&nbsp;&nbsp;<a target='_blank' href='%{$photos.0->photo_author_id|make_url:photo:user}%'>%{$photos.0->photo_author}%</a></span></p>
+				%{/if}%
+            </div>
+        	<div class="left r">
+            	<div class="small b">
+                   %{if empty($photos.1->photo_url)}%
+						<img src="%{HTML_UPLOAD_URL}%default.jpg"/>
+						<p>等你上传哦!!</p>
+					%{else}%
+					 <a target='_blank' href="%{$photos.1->id}%"><img src="%{HTML_UPLOAD_URL}%%{$photos.1->photo_url}%" /></a>
+					 <p>%{$photos.1->photo_name}%<span style='float:right;margin-right:5%;'>by&nbsp;&nbsp;<a target='_blank' href='%{$photos.1->photo_author_id|make_url:photo:user}%'>%{$photos.1->photo_author}%</a></span></p>
+					%{/if}%
+                </div>
+                <div class="small">
+                   %{if empty($photos.2->photo_url)}%
+						<img src="%{HTML_UPLOAD_URL}%default.jpg"/>
+						<p>等你上传哦!!</p>
+					%{else}%
+					 <a target='_blank' href="%{$photos.2->id}%"><img src="%{HTML_UPLOAD_URL}%%{$photos.2->photo_url}%" /></a>
+					 <p>%{$photos.2->photo_name}%<span style='float:right;margin-right:5%;'>by&nbsp;&nbsp;<a target='_blank' href='%{$photos.2->photo_author_id|make_url:photo:user}%'>%{$photos.2->photo_author}%</a></span></p>
+					%{/if}%
+                </div>
+          </div>
+          <div class="left">
+            	<div class="small b">
+                    %{if empty($photos.3->photo_url)}%
+						<img src="%{HTML_UPLOAD_URL}%default.jpg"/>
+						<p>等你上传哦!!</p>
+					%{else}%
+					 <a target='_blank' href="%{$photos.3->id}%"><img src="%{HTML_UPLOAD_URL}%%{$photos.3->photo_url}%" /></a>
+					 <p>%{$photos.3->photo_name}%<span style='float:right;margin-right:5%;'>by&nbsp;&nbsp;<a target='_blank' href='%{$photos.3->photo_author_id|make_url:photo:user}%'>%{$photos.3->photo_author}%</a></span></p>
+					%{/if}%
+                </div>
+                <div class="small">
+                   %{if empty($photos.4->photo_url)}%
+						<img src="%{HTML_UPLOAD_URL}%default.jpg"/>
+						<p>等你上传哦!!</p>
+					%{else}%
+						<a target='_blank' href="%{$photos.4->id}%"><img src="%{HTML_UPLOAD_URL}%%{$photos.4->photo_url}%" /></a>
+						<p>%{$photos.4->photo_name}%<span style='float:right;margin-right:5%;'>by&nbsp;&nbsp;<a target='_blank' href='%{$photos.4->photo_author_id|make_url:photo:user}%'>%{$photos.4->photo_author}%</a></span></p>
+					%{/if}%
+                </div>
+          </div>
+	</div>
+%{/if}%

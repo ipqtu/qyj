@@ -1,0 +1,51 @@
+	%{template member/header}%
+		<form accept-charset="UTF-8" action="/member/login" id="new_session" method="post">
+				<div class="signuploginbg">
+					<div class="signuplogin">
+						<div class="left">
+							<ul class="siglog">
+								<li class="linh2">
+									<span>没有趣友街帐号？<a href="%{$_USER.user_regist_url}%">%{$lang.regist_title}%</a></span>
+									%{$lang.login_title}%
+								</li>
+								<li>
+									<div id="username" class="inputboxes username">
+										<label for="user_name" style="display: block; ">%{$lang.user_name}%</label>
+										<input id="user_name" name="user_login" value="%{$user_name}%" autocomplete="off">
+									</div>
+								</li>
+								<li>
+									<div id="userpassword" class="inputboxes userpassword">
+										<label for="user_password" style="display: block; ">%{$lang.password}%</label>
+										<input type="password" id="user_password" name="user_pass" value="" autocomplete="off">
+										<span id="user_password_error"></span>
+									</div>
+									<a href="%{'find_password'|make_url:member}%" class="lostpassword">%{$lang.lost_password}%</a></li>
+								<li class="auto_login">
+									<input type="hidden" name="auto_login" value="0">
+									<input class="checkbox" value="1" type="checkbox" id="auto_login" name="auto_login" checked="&quot;checked&quot;">
+									<label for="auto_login">%{$lang.remember_me}%</label></li>
+								<li class="denglu">
+									<div class="button"><input value="" type="submit" class="button"><span></span></div>
+								</li>
+							</ul>
+						</div>
+					<div class="right">
+						<ul class="siglog">
+							<li class="linh2">快速通过微博帐号登录</li>
+							<li class="weibodl">
+								<a href="%{''|make_url:member:thirdlogin:renren}%" rel="nofollow"><img src="%{IMAGES_URL}%renren.png" title="人人网"></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</form>
+%{template member/footer}%
+	%{if !empty($error)}%
+		<script type="text/javascript">
+			<!--
+				alert("%{$error}%");
+			//-->
+		</script>
+	%{/if}%

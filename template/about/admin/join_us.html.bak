@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>管理区域</title>
+</head>
+<style type="text/css">
+	textarea{
+		height: 135px;
+		margin-left: 30px;
+		width: 860px;
+	}
+</style>
+<script type="text/javascript" src="/js/jq.js"></script>	
+<link rel="stylesheet" href="/css/edit/eedit/redactor.css" />
+<script src="/js/edit/eedit/redactor.js"></script>
+<script src="/js/edit/eedit/zh_cn.js"></script>
+<script type="text/javascript">
+	$(document).ready(
+		function()
+		{
+			$('#about').redactor({ 	
+				imageUpload: '%{SITE_URL}%/%{MANAGER_APP}%/edit_image_upload.html',
+				fileUpload: '%{SITE_URL}%/%{MANAGER_APP}%/edit_file_upload.html',
+				imageGetJson: '%{SITE_URL}%/%{MANAGER_APP}%/edit_show_upload_image.html',
+				lang: 'zh_cn',
+				css: 'style.css',
+				autoresize: true,
+				fixed: true
+			});
+		}
+	);
+</script>
+<body>
+<div id="man_zone">	
+	<form method="post" action="%{'join_us'|make_url:admin:about}%">
+		<p>关于我们:<br/><textarea name="about" id="about" >%{$join_us}%</textarea></p>
+		<p><input type="submit" value="修改" ><input type="reset" ></p>
+	</form>
+</div>
+</body>
+</html>
+%{if !empty($alert_info)}%
+<script type="text/javascript">
+<!--
+	alert("%{$alert_info}%");
+//-->
+</script>
+%{/if}%

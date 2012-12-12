@@ -1,0 +1,15 @@
+%{template about/header}%
+			<article class="">
+				%{loop $all_news $news}%
+					<div>
+						<h4>%{$news->title}%<sup>%{$news->ctime|ftime:Y-m-d}%</sup></h4>
+						<div style="margin-top:20px;margin-left:20px;">%{$news->content}%</div>	
+						<hr/>
+					</div>
+				%{/loop}%
+			</article>	
+		</div>
+	</div>
+	<footer id="footer">© <a href="%{SITE_URL}%">趣友街</a> 2009-2012</footer>
+</div>
+</body></html>

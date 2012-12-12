@@ -1,0 +1,83 @@
+	%{template member/header}%
+	<div class="topshow">
+			<div class="topshowmenu">
+				<div class="topshowtitle">我的趣友街</div>
+					<ul class="topmenutabs">
+						<li><a %{if $type == 0}% class="current" %{/if}% href="%{''|make_url:member:me}%" title="个人资料">个人资料</a> </li>
+						<li><a %{if $type == 1}% class="current" %{/if}% href="%{''|make_url:member:password}%" title="密码修改">密码修改</a></li>
+						<li><a %{if $type == 2}% class="current" %{/if}% href="%{''|make_url:member:message}%" title="我的消息">我的消息</a></li>
+						<li><a %{if $type == 3}% class="current" %{/if}% href="%{''|make_url:member:friends}%" title="我的好友">我的好友</a></li>
+					</ul>
+				</div>
+			</div>
+		<div class="content">
+			<form accept-charset="UTF-8" action="%{''|make_url:member:me}%" class="edit_user" id="edit_profile" method="post">
+				<div class="left">
+					<ul class="gerenleft">
+						<li class="topli">
+							<label for="user_name">用户名:</label>%{$user_name}%
+						</li>
+						<li>
+							<label for="user_email">
+							我的邮箱:
+							</label>
+							%{$user_email}%	
+						</li>
+						<li>
+							<label for="user_province">所在学校:</label>
+								<select id="user_province" name="user_college">
+									<option value="0" %{if $user_college==1}%selected%{/if}%>中国矿业大学</option>
+									<option value="1" %{if $user_college==2}%selected%{/if}%>其他学校</option>
+								</select>
+						</li>
+						<li>
+							<label for="user_province">头像:</label>
+							<img src="%{$user_avatar|get_user_avatar:small}%">
+						</li>
+						<li>
+							<label for="user_province">修改头像:</label>
+							%{include app/member/action/avatar.php}%
+						</li>
+						<li>
+							<label for="user_biography">自我介绍:</label>
+							<textarea class="inputregoff" cols="40" id="user_intro" name="user_autograph" onblur="this.className=&#39;inputregoff&#39;" onfocus="this.className=&#39;inputregon&#39;" rows="20">%{$user_autograph}%</textarea>
+							<span class="input-tip-textarea">
+								这里可以输入大约300字的自我介绍，让大家多了解你
+							</span> 
+						</li>
+						<li class="websites">
+							<label for="user_websites">博客或微博:</label> 
+							<div class="usersurlsfields">
+								%{loop $user_blogs $one_blog}%
+								<div>
+									<input class='inputregoff' onfocus='this.className=&#39;inputregon&#39;' onblur='this.className=&#39;inputregoff&#39;' size='30' type='text' name='user_blogs[]' value='%{$one_blog}%'>
+								</div>
+								%{/loop}%
+								<a href="#more" id="new_blog">更多</a>
+							</div>
+						</li>
+					</ul>
+					<div class="form-submit">
+						<div id="confirm_button" class="ui-button-green">
+							<span><button type="submit" class="ui-button">保存最新的设置</button></span>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="none" id="blog">
+			<div class="url new">
+				<input class="inputregoff" onfocus="this.className=&#39;inputregon&#39;" onblur="this.className=&#39;inputregoff&#39;" size="30" type="text" name="user_blogs[]" value="">
+				<a href="#more" class="add remove_blog">删除</a>
+			</div>
+		</div>
+%{template member/footer}%
+		<script type="text/javascript">
+		<!--
+		$(document).ready(function(){
+			$(".remove_blog").click(function(a){$(a.target).parent("div").remove()}),
+			$("#new_blog").click(function(a){$(a.target).before($($("#blog").html())),
+			$(".remove_blog").click(function(a){$(a.target).parent("div").remove()})})
+		});
+		//-->
+		</script>

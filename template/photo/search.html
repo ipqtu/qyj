@@ -1,0 +1,25 @@
+%{template photo/header}%
+<div id="main">
+	<h2>搜索结果</h2><hr/><br/>
+	<div>
+		%{loop $photos $one_photo}%
+			<div class="search_result">
+				<div class="photo_image">
+					<a href='%{$one_photo->id|make_url:photo:photo}%'>
+						<img src='%{HTML_UPLOAD_URL}%%{$one_photo->photo_url|get_image_url:2}%' />
+					</a>
+				</div>
+				<span>名称:<a href='%{$one_photo->id|make_url:photo:photo}%'>%{$one_photo->photo_name}%</a></span><br/>
+				<span>作者:<a href='%{$one_photo->photo_author_id|make_url:photo:user}%'>%{$one_photo->photo_author}%</a></span><br/>
+				<span>描述:%{$one_photo->photo_content}%</span>
+				<div style="clear:both;"></div>
+			</div>
+		%{/loop}%
+		<div style="clear:both;"></div>
+	</div>
+</div>
+%{template photo/footer}%
+<script src="%{JS_URL}%jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="%{JS_URL}%main.js" type="text/javascript"></script>
+</body>
+</html>

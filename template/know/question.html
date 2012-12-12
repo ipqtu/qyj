@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf8">
+	<title>趣友街--校园帮</title>
+	<link rel="stylesheet" media="screen" href="%{CSS_URL}%header.css" />
+	<link rel="stylesheet" media="screen" href="%{CSS_URL}%q.css" />
+</head>
+<body>
+	%{template know/header}%
+		<div id="content">
+				<div class="question">
+					<div class="q_content" >
+						<div class="title">%{$question->title}%</div>
+						<div class="info">提问者:%{$question->author_name}%&nbsp;&nbsp;悬赏:%{$question->spend_credits}%分<span></span><span></span>&nbsp;&nbsp;提问时间:%{$question->ctime|ftime:Y-m-d}%&nbsp;&nbsp;回答人数:%{$question->answer_num}%&nbsp;&nbsp;查看人数:%{$question->call_num}%</div>
+						<p>%{$question->quesstion}%</p>
+					</div>
+				</div>
+				%{if $question->best_answer_id	> 0}%
+				<div class="good_answer">
+					<p>最佳答案:</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我真的好想你啊。。。</p>
+				</div>
+				%{/if}%
+				<div class="answer" >
+					%{if $_USER.user_login ==1}%
+					<h3>我要回答:</h3>
+					<div class="public_answer">
+						<form method="post" action="?">
+							<div>
+								<textarea name="content" style="float:left;margin-left:40px; width: 780px; height: 88px;border-top:2px solid #FFCC99;border-left:2px solid #FFCC99;border-bottom:2px solid #FFCC99;border-right:0px; "></textarea>
+								<input type="submit" value="回答" style="float:left;width:90px;height: 92px;border-top:2px solid #FFCC99;border-right:2px solid #FFCC99;border-bottom:2px solid #FFCC99;border-left:2px solid #FFCC99;; ">
+							</div>
+							<div class="clear"></div>
+						</form>
+					</div>
+					%{else}%
+						<div align="center">亲,你还没有登录是不能答题的哦,<a href="%{'login'|make_url:member}%">点击登录</a></div>
+					%{/if}%
+					<h3>所有答案:</h3>
+					<div class="answer_content">
+						%{loop $answers $answer}%
+						<div class="answer_item">
+							<div class="num">%{template.loop.answers.loop_num}%.</div>
+							<div class="answer_str">
+								<p class="answer_author"><a href="1">%{$answer->author_name}%</a>&nbsp;&nbsp;%{$answer->ctime|ftime:m月d日 H:i}%&nbsp;&nbsp;</p>
+								<p>%{$answer->answer}%</p>
+							</div>
+							<div class="clear"></div>
+							%{if $_USER.user_login ==1}%
+							<div class="floor">
+								<span style="color:black;cursor:pointer;font-size:13px;" onclick="document.getElementById('div%{template.loop.answers.loop_num}%').style.display='block';document.getElementById('replay_floor_%{template.loop.answers.loop_num}%').value=%{$answer->id}%;">回复</span>
+							</div>
+							%{/if}%
+							
+							<div>
+								%{loop $replay_answer.$answer->id $replay}%
+									<div style="border-top:1px dashed white;margin-left:40px;padding-top:10px;">
+										<div style="float:left;">
+											<p style="margin-bottom:5px;">回复%{$replay->replay_floor}%楼:&nbsp;&nbsp;%{$replay->answer}%</p>
+											<p style="color:white;">%{$replay->author_name}%&nbsp;&nbsp;%{$replay->ctime|ftime:m月d日 H:i}%&nbsp;&nbsp;</p>
+										</div>
+										%{if $_USER.user_login ==1}%
+											<div style="float:right;width:10px;margin-right: 20px;">
+												<span style="color:#66CDFF;cursor:pointer;" onclick="document.getElementById('div%{template.loop.answers.loop_num}%').style.display='block';
+												document.getElementById('replay_floor_%{template.loop.answers.loop_num}%').value=%{$replay->id}%;">@%{$replay->floor}%#</span>
+											</div>
+										%{/if}%
+										<div style="clear:both;"></div>
+									</div>
+								%{/loop}%
+							</div>
+							%{if $_USER.user_login ==1}%
+							<div id="div%{template.loop.answers.loop_num}%" style="display:none;margin-left:20px;">
+								<form method="post" action="?replay" style="margin-left:30px;margin-top:10px;">
+									<input type="hidden" name="replay_id" id="replay_floor_%{template.loop.answers.loop_num}%" value="">
+									<p style="margin-bottom:0px;"><textarea name="content" style=" height: 46px; width: 700px;"></textarea></p>
+									<p><input type="submit" value="提交" style="width: 100px;height: 30px;"></p>
+								</form>
+							</div>
+							%{/if}%
+						</div>		
+						%{loopelse}%
+							<div align="center">很抱歉,还没有相关答案</div>
+						%{/loop}%
+						<style type="text/css">
+							.pages a{
+								background-color:#d7d7d7;
+								padding:3px;
+								color: black;
+							}
+						</style>
+						<div align="right">%{$page_html}%</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+</body>
+</html>

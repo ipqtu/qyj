@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="%{CSS_URL}%common.css" type="text/css" />
+<title>管理区域</title>
+</head>
+
+<body>
+<div id="man_zone">	
+	<form method="post" action="%{$user_info.id|make_url:admin:member:member_edit}%">
+		<p>用户名:%{$user_info.user_name}%</p>
+		<p>用户状态:%{if $user_info.user_status == 1}%<font color="#FF0000">未激活</font>%{elseif $user_info.user_status == 2}%<font color="#66FF00">激活</font>%{/if}%</p>
+		<p>新密码:<input type="password" name="password">(为空不修改秘密)</p>
+		<p>E-mail:<input type="text" name="email" value="%{$user_info.user_email}%"></p>
+		<p><input type="submit" value="提交" ><input type="reset" ></p>
+	</form>
+</div>
+</body>
+</html>
+%{if !empty($alert_info)}%
+<script type="text/javascript">
+<!--
+	alert("%{$alert_info}%");
+//-->
+</script>
+%{/if}%

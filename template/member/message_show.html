@@ -1,0 +1,135 @@
+	%{template member/header}%
+	<div class="topshow">
+			<div class="topshowmenu">
+				<div class="topshowtitle">我的趣友街</div>
+					<ul class="topmenutabs">
+						<li><a href="%{''|make_url:member:me}%" title="个人资料">个人资料</a> </li>
+						<li><a href="%{''|make_url:member:password}%" title="密码修改">密码修改</a></li>
+						<li><a class="current" href="%{''|make_url:member:message}%" title="我的消息">我的消息</a></li>
+						<li><a href="%{''|make_url:member:friends}%" title="我的好友">我的好友</a></li>
+					</ul>
+				</div>
+			</div>
+
+		<div class="content">
+			<div class="message_type">
+				<span class="d">发信息</span>
+				<span><a href="?type=0">系统信息</a></span>
+				<span><a href="?type=1">发件箱</a></span>
+				<span><a href="?type=2">收件箱</a></span>
+			</div>
+				%{loop $message_info $one_message}%
+					%{if ($one_message->send_user_id != $_USER.user_id) }%
+						<div class="said_1  said">
+							<div class="said_t1">
+								%{if $one_message->send_user_id == 0}%
+									系统信息&nbsp;&nbsp;&nbsp;&nbsp;%{$one_message->ctime|dtime}%前
+								%{else}%
+									<a href="%{$one_message->send_user_id|make_url:member:user}%">
+										%{$one_message->send_user_name}%
+									</a>
+									<p>%{$one_message->ctime|dtime}%前</p>
+								%{/if}%
+							</div>
+							<div class="said_img1">
+								%{if $one_message->send_user_id == 0}%
+									<img src="%{IMAGES_URL}%systemavatar_small.jpg" width="50" height="50">
+								%{else}%
+									<a href="%{$one_message->send_user_id|make_url:member:user}%">
+										<img src="%{$one_message->send_user_id|get_user_avatar:small}%" width="50" height="50">
+									</a>
+								%{/if}%
+							</div>
+							<div class="said_frame1">
+								<div class="f1_top_a">
+									<div class="f1_top_b">
+										<div class="f1_top_c">
+											&nbsp;
+										</div>
+									</div>
+								</div>
+								<div class="f1_body_a">
+									<div class="f1_body_b">
+										%{$one_message->content}%
+									</div>
+								</div>
+								<div class="f1_bot_a">
+									<div class="f1_bot_b">
+										<div class="f1_bot_c">
+											&nbsp;
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					%{else}%
+						<div class="said_2 said">
+							<div class="said_t2">
+								<p>%{$one_message->ctime|dtime}%前</p>
+							</div>
+							<div class="cb"></div>
+							<div class="said_img2">
+								<a href="%{$one_message->send_user_id|make_url:member:user}%">
+									<img src="%{$one_message->send_user_id|get_user_avatar:small}%" width="50" height="50">
+								</a>
+							</div>
+							<div class="said_frame2">
+								<div class="f2_top_a">
+									<div class="f2_top_b">
+										<div class="f2_top_c">
+											&nbsp;
+										</div>
+									</div>
+								</div>
+								<div class="f2_body_a">
+									<div class="f2_body_b">
+										%{$one_message->content}%
+									</div>
+								</div>
+								<div class="f2_bot_a">
+									<div class="f2_bot_b">
+										<div class="f2_bot_c">
+											&nbsp;
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					%{/if}%
+						<div class="cb"></div>
+				%{/loop}%
+				%{if $one_message->send_user_id != 0}%
+				<div class="said_img2">
+                    <a><img src="%{$_USER.user_avatar|get_user_avatar:small}%" width="50" height="50"></a>
+                </div>
+				<div class="said_frame2">
+                        <div class="f2_top_a">
+                            <div class="f2_top_b">
+                                <div class="f2_top_c">
+                                    &nbsp;
+                                </div>
+                            </div>
+                        </div>
+						<form method="post" action="?">
+                        <div class="f2_body_a">
+                            <div class="f2_body_b">
+								<input type="hidden" name="message_id" value="%{$message_id}%">
+                                <textarea id="cont" name="content"></textarea>
+                            </div>
+                        </div>
+                        <div id="submit">
+                            <input class="submit" type="submit" value="提交" name="commit">
+                        </div>
+						 </form>
+                        <div class="f2_bot_a">
+                            <div class="f2_bot_b">
+                                <div class="f2_bot_c">
+                                    &nbsp;
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cb"></div>
+			   </div>
+			   %{/if}%
+		</div>
+%{template member/footer}%

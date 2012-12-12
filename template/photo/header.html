@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>%{SITE_NAME}%</title>
+<meta name="keywords" content="趣友街,趣友,www.quyoujie.com,趣友街团队,中国矿业大学,中国矿业大学春季图片展,矿大春季图片展,春季图片展" />
+<meta name="description" content="矿大春季照片,中国矿业大学校学生会联合趣友街网络为同学们创造一个展示自己照片的舞台，提供与他人进行交流的机会，让更多的人分享自己的出行经历，分享对春天的感悟." />
+<link href="%{CSS_URL}%base.css" rel="stylesheet" type="text/css" />
+<link href="%{CSS_URL}%header.css" rel="stylesheet" type="text/css" />
+%{if $type == -1}%
+	<link href="%{CSS_URL}%detail.css" rel="stylesheet" type="text/css" />
+%{else}%
+	<link href="%{CSS_URL}%main.css" rel="stylesheet" type="text/css" />
+%{/if}%
+</head>
+<body>
+<div class="goTop">
+<a id="goToTop" href="javascript:void(0)" onclick="return false" title="返回顶部"></a>
+</div>
+<div class="top">
+	<div class="site_nav">
+		<ul>
+			<li><a href="%{SITE_URL}%">首页&nbsp;</a></li>
+			<li>|&nbsp;<a href="%{SITE_URL}%/photo">春季图片展&nbsp;</a></li>
+			<li>|&nbsp;<a href="%{SITE_URL}%/about">关于我们&nbsp;</a></li>
+		</ul>
+	</div>
+	<div class="my_info">
+			<ul>
+			%{if !empty($_USER.user_logout_url)}%
+				<li>你好&nbsp;<a href="%{''|make_url:member:me}%"><b>%{$_USER.user_name}%</b></a>|</li>
+				<li id="myUpload" >
+					<a href="#">我要上传|</a>
+				</li>
+				%{if !empty($_USER.user_new_message_num)}%
+				<li>
+					<a href="%{''|make_url:member:message}%">
+						<img src="%{IMAGES_URL}%0.gif" width="18" height="12" alt="">(%{$user_new_message_num}%)
+					</a>|
+				</li>
+				%{/if}%
+
+				<li id="my_app"><a href="#">我的应用<img src="%{IMAGES_URL}%app.gif" width="11" height="11" border="0" alt=""></a>
+					<ul class="none">
+						<li><a href="%{$_USER.user_id|make_url:photo:user}%" >我的图片展</a></li>
+						<li><a href="%{''|make_url:member:message}%" >我的消息</a></li>
+						<li><a href="%{''|make_url:member:friends}%" >我的好友</a></li>
+					</ul>
+				</li>
+				<li>[<a href="%{$_USER.user_logout_url}%" >退出</a>]</li>
+				%{else}%
+					<li><a href="%{$_USER.user_login_url}%">登录</a></li>
+					<li><a href="%{$_USER.user_regist_url}%" >注册</a></li>
+				%{/if}%
+			</ul>
+		</div>
+	</div>
+</div>
+<div id="wrapper">
+	<div id="header">
+        <div id="top">
+        <a href="%{''|make_url:photo:gd}%" style="float:right;"><font size="2" color="#FF0000">好消息:活动期间报名广大驾校可享受300元优惠!团体报名优惠更多!</font></a>
+            <a href="%{SITE_URL}%/%{APP}%"><img class="logo" src="%{IMAGES_URL}%logo.gif" /></a>
+			<br/>
+			<img src="%{IMAGES_URL}%system.gif" width="16" height="16">
+			<font size="2" color="#C0C0C0">非常抱歉,由于昨天升级程序导致新注册用户的激活邮件无法正常激活,现在已经将最近注册用户自动激活,
+			如果你发现你注册帐号还无法正常激活的和使用,请联系我们,我们网站最近在不断升级,在此过程中带来不便,请大家谅解,如果发现相关问题可以意见反馈给我们,我们会及时处理.</font></a>
+		</div>
+	<div id="top_nav">
+        	<ul>
+            	<li %{if $type == 0}%class="choosed"%{/if}%><a href="%{0|make_url:photo:index}%">热门</a></li>
+                <li %{if $type == 1}%class="choosed"%{/if}%><a href="%{1|make_url:photo:index}%">最新</a></li>
+                <li %{if $type == 2}%class="choosed"%{/if}%><a href="%{2|make_url:photo:index}%">随机</a></li>
+				<li %{if $type == 3}%class="choosed"%{/if}%><a href="%{3|make_url:photo:index}%">冷门</a></li>
+				<li %{if $type == 4}%class="choosed"%{/if}%><a href="%{4|make_url:photo:index}%">女生</a></li>
+				<li %{if $type == 7}%class="choosed"%{/if}%><a href="%{''|make_url:photo:reward}%">获奖</a></li>
+            </ul>
+			<div id="search">
+				<form method="post" action="%{''|make_url:photo:search}%">
+					<select name="type">
+						<option value="0" selected>上传者
+						<option value="1">图片名称
+					</select>
+					<input type="text" name="content"> <input type="submit" value="搜索">
+				</form>
+			</div>
+			<div style="clear:both;"></div>
+        </div>
+     </div>

@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="%{CSS_URL}%common.css" type="text/css" />
+<title>管理区域</title>
+</head>
+
+<body>
+<div id="man_zone">	
+	<form method="post" action="%{'email_setting'|make_url:admin:email}%">
+		%{if $email_method == 0}%
+		<p>邮件发送方式:SMTP</p>
+		<p>邮件编码:
+			<input type="radio" name="char" value="0" %{if $email_cache_data.SMTP.email_char == 'utf-8'}%checked%{/if}%>utf-8
+			<input type="radio" name="char" value="1" %{if $email_cache_data.SMTP.email_char == 'gb2312'}%checked%{/if}%>gb2312
+		</p>
+		<p>邮件服务器地址:<input type="text" name="email_host" value="%{$email_cache_data.SMTP.email_host}%"></p>
+		<p>邮件服务器端口:<input type="text" name="email_port" value="%{$email_cache_data.SMTP.email_port}%"></p>
+		<p>SMTP是否需要密码验证<input type="checkbox" name="email_auth" %{if $email_cache_data.SMTP.email_auth}%checked%{/if}%></p>
+		<p>邮箱服务器用户名:<input type="text" name="email_user_name" value="%{$email_cache_data.SMTP.email_user}%"></p>
+		<P>邮箱服务器密码:<input type="password" name="email_password" value="%{$email_cache_data.SMTP.email_password}%"></p>
+		<p>发邮人邮箱地址:<input type="text" name="from_email" value="%{$email_cache_data.SMTP.from_email}%"></p>
+		<p>发件人名字:<input type="text" name="from_name" value="%{$email_cache_data.SMTP.from_name}%"></p>
+		<p>邮件的标题:<input type="text" name="from_email_title" value="%{$email_cache_data.SMTP.from_email_title}%"></p>
+		<p>邮件每行的字符数:<input type="text" name="wordwrap" value="%{$email_cache_data.SMTP.email_wordwrap}%"></p>
+		<p>回复收件人邮箱:<input type="text" name="replay_email" value="%{$email_cache_data.SMTP.replay_email}%"></p>
+		<p>回复收件人名字:<input type="text" name="replay_name" value="%{$email_cache_data.SMTP.replay_name}%"></p>
+		%{/if}%
+		<input type="submit" value='修改'>
+	</form>
+</div>
+</body>
+</html>
+%{if !empty($alert_info)}%
+<script type="text/javascript">
+<!--
+	alert("%{$alert_info}%");
+//-->
+</script>
+%{/if}%

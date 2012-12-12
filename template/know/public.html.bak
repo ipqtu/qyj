@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf8">
+	<title>趣友街--校园帮</title>
+	<link rel="stylesheet" media="screen" href="%{CSS_URL}%header.css" />
+	<style type="text/css">
+	#public{
+		margin:auto auto;
+		width:800px;
+	}
+	#public p{
+		margin-top:20px;
+	}
+	#public textarea{
+		margin-top: 0px;
+		margin-bottom: 0px;
+		height: 90px;
+		margin-left: 60px;
+		margin-right: 0px;
+		width: 575px;
+	}
+	.button{
+		width: 80px;
+		height: 30px;
+		margin-left: 80px;
+	}
+	</style>
+</head>
+<body>
+	%{template know/header}%
+		<div id="content">
+			<div id="public">
+				<form method="post" action="?">
+					<p>问题标题:&nbsp;&nbsp;<input type="text" name="title"></p>
+					<p>问题类型:&nbsp;&nbsp;<select name="type_id" >
+								%{loop $app_cache.type $type_id $type_value}%
+									<option value="%{$type_id}%">%{$type_value}%
+								%{/loop}%
+							</select>
+					</p>
+					<p>具体问题:<br/><textarea name="content" class="content"></textarea></p>
+					<p>悬赏积分:&nbsp;&nbsp;<input type="text" name="credits">&nbsp;&nbsp;&nbsp;(可用积分:<span style="color:red">%{$user_credits}%</span>)</p>
+					<p><input type="submit" value="发表"  class="button" ><input type="reset"  class="button"></p>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

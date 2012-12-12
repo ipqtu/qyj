@@ -1,0 +1,37 @@
+<!--上传框-->
+<div id="bigDiv"></div>
+<div class="message_box" id="upload_box">
+	<div class="close"><img src="%{IMAGES_URL}%close.gif" alt="close" /></div>
+	<h4>上传作品</h4>
+    <div id="upload_detail">
+    	<div id="upload_detail_img">图片预览</div>
+        <div id="upload_detail_right">
+        	<form action="%{''|make_url:photo:upload}%" method="POST" enctype="multipart/form-data">
+            	<p>上传图片</p>
+            	<p><input type="file" id="imgSrc" name="photo"/></p>
+            	<p>标题</p>
+                <p><input type="text" value=""  name="title"/></p>
+                <p>描述</p>
+                <textarea name="describe" ></textarea>
+                 <p><input type="submit" class="submit" value="上传" /></p>
+				 <p>图片的大小不能小于280*280<br/>超大图片请耐心等待上传哦!!</p>
+            </form>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+</div>
+<div id="footer">
+            <p>
+				<a target="_blank" href="http://www.cumt.edu.cn/">中国矿业大学</a>
+				<a target="_blank" href="/about">关于我们</a> 
+				<a target="_blank" href="/about">加入我们</a>
+			</p>
+			<p>
+				©&nbsp;2012趣友街&nbsp;蜀ICP备12007241号-1版权所有&nbsp;Powered&nbsp;by&nbsp;趣友街</p>
+			<p></p>
+ </div>
+ <div class="feedback-box"><a href="/about/contact.html">意见反馈 </a></div>
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F0a2d9de5f95b22916deaf556d748bb51' type='text/javascript'%3E%3C/script%3E"));
+</script>

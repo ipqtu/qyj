@@ -1,0 +1,67 @@
+%{template about/header}%
+			<article class="">
+				<div>
+					<form method="post" action="?">
+						<p>Email:<input type="text" name="email">(以便我们联系你，我们会对你的邮箱保密)</p>
+						<p>我的意见:<br/><textarea name="content" style="height: 113px;width: 994px;"></textarea></p>
+						<p align="right"><input type="submit" value="谢谢你的意见^ v ^" style="width: 170px;height: 40px;"></p>
+					</form>
+				</div>
+				<div>
+					<hr>
+					<h3>意见</h3>
+					<div style="margin-left:50px;">
+						%{loop $all_contact $contact}%
+							<div>
+								<div>
+									<div style="float:left;width:10px;">%{template.loop.all_contact.loop_num}%.</div>
+									<div style="margin-left:20px;float:left;">
+										<p style="margin-bottom:5px;">%{$contact->content}%</p>
+										<p style="color:#C0C0C0;">%{$contact->ctime|ftime:m月d日 H:i}%&nbsp;&nbsp;
+										<span style="color:#66CDFF;cursor:pointer;" onclick="document.getElementById('div%{template.loop.all_contact.loop_num}%').style.display='block';
+										document.getElementById('replay_floor_%{template.loop.all_contact.loop_num}%').value=%{$contact->id}%;">回复</span>
+										%{if $_USER.user_id == FOUNDER_ID}%<span><a href="%{'contact_us'|make_url:about}%?del=%{$contact->id}%">删除</a></span>%{/if}%
+										</p>
+									</div>
+									<div style="float:right;width:10px;margin-right: 20px;">#%{$contact->floor}%</div>
+									<div style="clear:both;"></div>
+								</div>
+									%{loop $replay_contact.$contact->id $replay}%
+										<div style="border-top:1px dashed #D0D0D0;margin-left:40px;padding-top:10px;">
+										<div style="float:left;">
+											<p style="margin-bottom:5px;">回复%{$replay->replay_floor}%楼:&nbsp;&nbsp;%{$replay->content}%</p>
+											<p style="color:#C0C0C0;">%{$replay->ctime|ftime:m月d日 H:i}%&nbsp;&nbsp;<span style="color:#66CDFF;cursor:pointer;" onclick="document.getElementById('div%{template.loop.all_contact.loop_num}%').style.display='block';
+											document.getElementById('replay_floor_%{template.loop.all_contact.loop_num}%').value=%{$replay->id}%;">回复</span>
+											%{if $_USER.user_id == FOUNDER_ID}%<span><a href="%{'contact_us'|make_url:about}%?del=%{$replay->id}%">删除</a></span>%{/if}%
+											</p>
+										</div>
+										<div style="float:right;width:10px;margin-right: 20px;">#%{$replay->floor}%</div>
+										<div style="clear:both;"></div>
+										</div>
+									%{/loop}%
+								<div id="div%{template.loop.all_contact.loop_num}%" style="display:none;margin-left:20px;">
+									<form method="post" action="?replay" style="margin-left:30px;margin-top:10px;">
+										<input type="hidden" name="replay_id" id="replay_floor_%{template.loop.all_contact.loop_num}%" value="">
+										<p style="margin-bottom:0px;"><textarea name="content" style=" height: 46px; width: 798px;"></textarea></p>
+										<p><input type="submit" value="提交" style="width: 100px;height: 30px;"></p>
+									</form>
+								</div>
+								<hr/>
+							</div>
+						%{/loop}%
+					</div>
+				</div>
+			</article>	
+		</div>
+	</div>
+	<footer id="footer">© <a href="%{SITE_URL}%">趣友街</a> 2009-2012</footer>
+</div>
+</body>
+</html>
+%{if !empty($alert_info)}%
+<script type="text/javascript">
+<!--
+	alert("%{$alert_info}%");
+//-->
+</script>
+%{/if}%

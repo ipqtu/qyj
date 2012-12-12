@@ -1,0 +1,16 @@
+%{template bk/header}%
+      <article>
+        <header>
+          <h1>%{$types.$type_id}%</h1>
+        </header>
+		%{loop $bks $bk}%
+        <section id="twitterSupport">
+          <header>
+            <h1><a href="%{$bk->id|make_url:bk:bk}%">%{$bk->title}%</a></h1>
+          </header>
+          <p>%{$bk->content}%</p>
+		  <p>%{$bk->author}%&nbsp;发表于：%{$bk->ctime|ftime:Y-m-d}% <span style="float:right;">访问(%{$bk->call_num}%)&nbsp;留言(%{$bk->leave_num}%)&nbsp;顶(%{$bk->good_num}%)&nbsp;踩(%{$bk->bad_num}%)</span></p>
+        </section>
+		%{/loop}%
+      </article>
+%{template bk/footer}%

@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="%{CSS_URL}%common.css" type="text/css" />
+<title>管理区域</title>
+</head>
+
+<body>
+<div id="man_zone">	
+	<table width="99%" border="0" align="center"  cellpadding="3" cellspacing="1" class="table_style">
+		<tr>
+			<td width="20%" class="left_title_1">标题</td>
+			<td width="10%" class="left_title_1">作者</td>
+			<td width="10%" class="left_title_1">时间</td>
+			<td width="10%" class="left_title_1">访问人数</td>
+			<td width="10%" class="left_title_1">留言人数</td>
+			<td class="left_title_1">管理</td>
+		</tr>
+	%{loop $all_bk $one_bk}%
+		<tr>
+			<td  class="left_title_2">%{$one_bk->title}%</td>
+			<td  class="left_title_2">%{$one_bk->author}%</td>
+			<td  class="left_title_2">%{$one_bk->ctime|ftime:Y-m-d}%</td>
+			<td  class="left_title_2">%{$one_bk->call_num}%</td>
+			<td  class="left_title_2">%{$one_bk->leave_num}%</td>
+			<td>
+				<a href="%{$one_bk->id|make_url:admin:bk:edit_bk}%">编辑</a>|
+				<a href="%{$one_bk->id|make_url:admin:bk:show_all_bk}%?page=%{$page}%">删除</a>
+			</td>
+		</tr>
+	%{/loop}%
+	</table>
+	<p>%{$page_html}%</p>
+</div>
+</body>
+</html>
+%{if !empty($alert_info)}%
+<script type="text/javascript">
+<!--
+	alert("%{$alert_info}%");
+//-->
+</script>
+%{/if}%

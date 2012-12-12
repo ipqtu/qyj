@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" async="" src="%{JS_URL}%ga.js"></script><script type="text/javascript">
+	var _speedMark = new Date();
+</script>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+<title>趣友街-八卦坊</title>
+<meta content="八卦你身边的事情,快乐每一天" name="description"> 
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link href="%{CSS_URL}%common.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <a id="top" name="top"></a>
+        <div class="header_container">
+            <div class="container">
+                <div class="logo"><a href="%{SITE_URL}%">趣友街</a></div>
+                <div class="nav">
+                    <ul>
+                        <li>
+                        <a href="%{SITE_URL}%" style="color: #fff;">首页</a>
+                        </li>
+                        <li>
+                        <a href="%{'add'|make_url:speak}%">发表话题</a>
+                        </li>
+                    </ul>
+                </div>
+                 
+                <div class="pro">
+					<div class="login_user">
+					%{if !empty($_USER.user_logout_url)}%
+                        <a href="%{$_USER.user_my_url}%" class="profile-links">
+                            <span id="profile-image">
+                                <img src="%{$_USER.user_avatar|get_user_avatar:small}%">
+                            </span>
+                        </a>
+                        <span class="screen-name">%{$_USER.user_name}%</span>
+                        <div class="dropdown">
+                            <ul class="user-dropdown" style="text-align: center;">
+                                <li><a href="%{$_USER.user_my_url}%">设置</a></li>
+                                <li><a href="%{$_USER.user_logout_url}%">退出</a></li>
+                            </ul>
+                        </div>
+					%{else}%
+						<span class="login_regist" ><a href="%{$_USER.user_login_url}%">登录</a></span>
+						<span class="login_regist" ><a href="%{$_USER.user_regist_url}%" >注册</a></span>
+					%{/if}%
+					</div>
+               </div>
+            </div>
+        </div>
+		<div class="container">
+			<div class="sidebar">
+
+				 <div class="box" style="">
+					<div>
+						<div style="float:left; margin-right: 10px;">
+							<a href="%{$_USER.user_my_url}%" style="display:block;">
+								<img width="100px" height="100px" alt="%{$_USER.user_name}%" src="%{$_USER.user_avatar|get_user_avatar:middle}%">
+							</a>
+						</div>
+						<div style="">
+							<div style="color:#636A86">%{if !empty($_USER.user_name)}% %{$_USER.user_name}% %{/if}%</div>
+							<div style="margin-top: 10px; color: #808080; word-wrap: break-word;overflow: hidden;"></div>
+						</div>
+					</div>
+					<div style="clear: both;"></div>
+					<div style="border-top:1px solid #E2E2E2; margin-top: 20px; padding-top:10px;">
+						<a style="color: #808080;" href="%{'message'|make_url:member}%">
+							%{$_USER.user_new_message_num}% 条未读提醒</a>
+					</div>
+				</div>
+
+				<div class="box" style="margin-top: 20px;">
+					<div>
+						<a style="color: #808080;" href="http://youqu.de/topic/add#" class="mean">我要提意见/建议</a>
+						<a href="http://youqu.de/about" style="color: #808080; float:right; margin-right: 10px;">关于有趣的</a>
+						<div class="mean_form" style="display:none;">
+							<form id="mean_add" autocomplete="off">
+								<div class="comment-box">
+									<textarea id="mean_content" name="content"></textarea>
+								</div>
+								<div class="comment-submit">
+									<input type="submit" class="submit" value="提交">
+									<a href="http://youqu.de/topic/add#" style="color: #808080; margin-left: 10px;" class="mean_cancel">取消</a>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="main radius">
+				<div style="padding: 5px 5px 15px 5px;">
+					<div style="padding: 10px 0px 20px 10px; color: #808080;">
+						创建话题
+					</div>
+					<div class="add">
+						<form method="post" action="%{'add'|make_url|speak}%" id="topic_add" autocomplete="off">
+							<div class="item">
+								<input name="title" class="text" maxlength="30" type="text" value=""><span style="color: #808080; margin-left: 5px; font-size: 12px;">标题不少于5个字</span>
+							</div>
+							<div class="item">
+								<select name="" style="font-size: 25px;margin-left:0px;width:100px;height:40px;border-radius: 3px 3px 3px 3px;border: 1px solid #CCC;">
+									%{loop $type $type_key $type_value}%
+									<option value="%{$type_key}%">%{$type_value}%
+									%{/loop}%
+								</select>
+							</div>
+							<div class="item">
+								<textarea id="topic_content" name="content" style="width: 520px; height: 320px; overflow: hidden; "></textarea>
+							<div style="position: absolute; display: none; word-wrap: break-word; font-weight: normal; width: 520px; font-family: monospace; line-height: normal; font-size: 14px; padding: 8px; ">&nbsp;</div></div>
+							<div class="item">
+								<a href="http://youqu.de/topic/add#" id="add_tag_link" style="color: #808080;">添加标签</a>
+								<div style="display:none;" id="tag_input">
+									<input name="tag_name" class="text" maxlength="2" type="text" value="" style="width:60px;">
+									<span style="margin-left: 10px; font-size: 12px;">标签为两个汉字（如电影、工作等，清晰、合理的标签可以让话题更有价值。）</span>
+								</div>
+							</div>
+							<div>
+								<input class="reg_bottom" type="submit" value="创建">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container" style="clear: both; text-align: center; color: #808080; padding: 35px 0px;">
+			© 2012 趣友街
+		</div>
+	</body>
+</html>

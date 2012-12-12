@@ -1,0 +1,44 @@
+%{template photo/header}%
+     <div id="main">
+     	<div class="main_left left clearfix">
+        	<div class="my_img">
+                <h2>%{$author_info.user_name}%个人图片中心</h2>
+                <ul>
+                   %{loop $user_photos $one_photo}%
+						%{if $one_photo.photo_author_id == $_USER.user_id }%
+							<li>
+								<div class='user_list_photo'>
+								<form method='post' action='%{$one_photo.id|make_url:photo:edit}%'>
+									<a href='%{$one_photo.id|make_url:photo:photo}%'>
+									<img src='%{HTML_UPLOAD_URL}%%{$one_photo.photo_url|get_image_url:2}%' />
+									</a>
+									<span>名称:<input type='text' name='name' value='%{$one_photo.photo_name}%'></span><br/>
+									<span>内容:</span><br/>
+									<textarea name='content'>%{$one_photo.photo_content}%</textarea><br/>
+									<span><input type='submit' value='编辑'></span><span><a href='%{$one_photo.id|make_url:photo:del}%'>删除</a></span>
+								 </form>
+								 <div>
+							</li>
+						%{else}%
+							<li>
+								<div class='user_list_photo'>
+									<a href='%{$one_photo.id|make_url:photo:photo}%'>
+										<img src='%{HTML_UPLOAD_URL}%%{$one_photo.photo_url|get_image_url:2}%' />
+									</a>
+								 <span>名称:%{$one_photo.photo_name}%</span><br>
+								 <span>描述:%{$one_photo.photo_content}%</span>
+								<div>
+							</li>
+						%{/if}%
+				   %{/loop}%
+                </ul>
+            </div>
+        </div>
+     </div>
+  	%{template photo/footer}%
+<div id="bigDiv"></div>
+</div> 
+<script src="%{JS_URL}%jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="%{JS_URL}%main.js" type="text/javascript"></script>   
+</body>
+</html>

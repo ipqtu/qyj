@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>趣友街百科</title>
+<meta name="keywords" content="趣友街,趣友,www.quyoujie.com,趣友街团队,中国矿业大学,数字化校园,矿大数字化校园" />
+<meta name="description" content="趣友街网站是以服务学生为宗旨，采用网络虚拟化大学生校园的方法，虚拟大学生周围的生活学习环境，为大学生提供更加方便快捷的服务，我们网站做到更加本地化，更加人性化，网站项目更加的贴近大学生的生活，为大学打造一个学习和生活的网络平台。" />
+</head>
+ <link rel="stylesheet" href="%{CSS_URL}%common.css">
+ <!--[if lt IE 9]>
+	<script src="/js/about/html5.js"></script>
+	<![endif]-->
+
+<body>
+<div id="header">
+	<div id="header_inner">
+		<div id="logo"><a href="%{SITE_URL}%">趣友街</a></div>
+		<ul id="appendix">			
+			<li id="maillink"></li>
+			<li><a href="%{SITE_URL}%/photo" title="图片分享">图片分享</a></li>
+			<li><a href="%{SITE_URL}%/action" title="活动公告">活动公告</a></li>
+			<li><a href="%{SITE_URL}%/know" title="活动公告">校园问问</a></li>
+		</ul>
+	</div>
+</div>
+<div id="support">
+
+    <div class="container">
+
+      <!-- Header -->
+      <header>
+
+        <!-- Icon -->
+        <img id="icon" src="%{IMAGES_URL}%icon-160.png" width="160" height="160" alt="">
+
+        <div id="public"><a href="%{'public'|make_url:bk}%"><img src="%{IMAGES_URL}%public.png" width="160" height="48" border="0" alt="我要发布"></a></div>
+        <nav>
+          <ul>
+			<li><a href="%{'bk'|make_url}%">首页</a></li>
+			%{loop $types $key $type}%
+				<li><a href="%{$key|make_url:bk:type}%">%{$type}%</a></li>
+			%{/loop}%
+			<!-- <li class="active">Support</li> -->
+          </ul>
+        </nav>
+
+      </header>

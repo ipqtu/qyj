@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>%{SITE_NAME}%</title>
+		<link href="%{CSS_URL}%a.css" media="screen" rel="stylesheet" type="text/css">
+		<link href="%{CSS_URL}%b.css" media="screen" rel="stylesheet" type="text/css">
+	</head>
+	<body class="layout_sessions_new">
+		<div id="headwrap">
+			<div class="top">
+				<div class="site_nav">
+					<ul>
+						<li><a href="%{SITE_URL}%">首页&nbsp;</a></li>
+						<li>|&nbsp;<a href="%{SITE_URL}%/photo">春季图片展&nbsp;</a></li>
+						<li>|&nbsp;<a href="%{SITE_URL}%/about">关于我们&nbsp;</a></li>
+					</ul>
+				</div>
+				<div class="my_info">
+					<ul>
+						%{if !empty($_USER.user_logout_url)}%
+							<li>你好,<a href="%{''|make_url:member:me}%"><b>%{$_USER.user_name}%</b></a></li>
+							%{if !empty($_USER.user_new_message_num)}%
+								<li>
+									<a href="%{''|make_url:member:message}%">
+										<img src="%{IMAGES_URL}%0.gif" width="18" height="12" alt="">(%{$user_new_message_num}%)
+									</a>
+								</li>
+								
+							%{/if}%
+							<li id="my_app">
+								|&nbsp;<a href="#">我的应用<img src="%{IMAGES_URL}%app.gif" width="11" height="11" border="0" alt=""></a>
+								<ul class="none" id="app">
+									<li><a href="%{$_USER.user_id|make_url:photo:user}%" >我的图片展</a></li>
+									<li><a href="%{''|make_url:member:message}%" >我的消息</a></li>
+									<li><a href="%{''|make_url:member:friends}%" >我的好友</a></li>
+								</ul>
+							</li>
+							<li>[<a href="%{$_USER.user_logout_url}%" >退出</a>]</li>
+						%{else}%
+							<li><a href="%{$_USER.user_login_url}%">登录</a></li>
+							<li><a href="%{$_USER.user_regist_url}%" >注册</a></li>
+						%{/if}%
+					</ul>
+				</div>
+			</div>
+		</div>

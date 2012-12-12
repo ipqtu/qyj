@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf8">
+	<title>趣友街--校园帮</title>
+	<link rel="stylesheet" media="screen" href="%{CSS_URL}%header.css" />
+	<link rel="stylesheet" media="screen" href="%{CSS_URL}%me.css" />
+</head>
+<body>
+	%{template know/header}%
+		<div id="content">
+			<div class="left_nav">
+				<ul>
+					<li class="selected"><a href="%{'my_question'|make_url:know}%">我的问题</a></li>
+					<li><a href="%{'my_answer'|make_url:know}%">我的回答</a></li>
+					<li><a href="%{'my_credite'|make_url:know}%">我的积分</a></li>
+					<li><a href="%{'my'|make_url:know}%">我的信息</a></li>
+				</ul>
+			</div>
+			<div class="right_content">
+				%{if empty($use_quetions)}%
+					<div>你还没有发表一个问题哦</div>
+				%{else}%
+					<div>
+						<ul>
+						%{loop $use_quetions $question}%
+							<li><a href="%{$question->id|make_url:know:question}%">%{$question->title}%</a><span style="float:right;font-size:12px;">%{$question->answer_num}%人回复</span></li>
+						%{/loop}%
+						</ul>
+					</div>
+					<div align="right">%{$page_html}%</div>
+				%{/if}%
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</body>
+</html>

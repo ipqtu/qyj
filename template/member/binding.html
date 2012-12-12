@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>%{SITE_NAME}%</title>
+<link href="%{CSS_URL}%a.css" media="screen" rel="stylesheet" type="text/css">
+<link href="%{CSS_URL}%b.css" media="screen" rel="stylesheet" type="text/css">
+</head>
+<body class="layout_sessions_new">
+<div id="headwrap">
+<div id="ui_notification_show" class="systemnotice"></div>
+<div class="top">
+	<a href="%{SITE_URL}%">首页</a> &nbsp;&nbsp;&nbsp;<a href="%{SITE_URL}%/photo">春季图片展</a>
+</div>
+</div>
+</div>
+<div class="signuploginbg">
+<div class="signuplogin weibos">
+<div class="left">
+<div class="linh2">
+	<a href="%{$user_third_url}%">
+		<img src="%{$third_user_info->third_avatar}%" width="32" height="32" align="absmiddle">
+		<span>%{$third_user_info->third_name}%</span>
+	</a>
+	<p>欢迎来到趣友街！</p>
+</div>
+<form accept-charset="UTF-8" action="%{''|make_url:member:binding}%" class="new_user" id="new_user" method="post">
+	<div class="linradio">
+		<input id="signup_bind" name="bind" type="radio" value="signup" checked="checked">
+		<label for="signup_bind">快速注册趣友街账号</label>
+	</div>
+	<ul class="siglog">
+		<li>
+			<div id="username" class="inputboxes username">
+				<label for="user_name" style="display: none; ">用户名</label>
+				<input autocomplete="off" id="user_name" name="user_login" size="30" type="text" value="%{$third_user_info->third_name}%">
+				%{if !empty($user_error)}%<em class="warning">%{$user_error}%</em>%{/if}%
+				<span class="usernamer">中英文、数字、下划线及减号</span>
+			</div>
+		</li>
+		<li>
+			<div id="userpassword" class="inputboxes userpassword">
+				<label for="user_password" style="display: block; ">密 码</label>
+				<input autocomplete="off" id="user_password" name="password" size="30" type="password">
+				%{if !empty($password_error)}%<em class="warning">%{$password_error}%</em>%{/if}%
+				<span class="passwordr">至少6个字符</span>
+			</div>
+		</li>
+		<li>
+			<div id="useremail" class="inputboxes useremail">
+				<label for="user_email" style="display: block; ">邮 箱</label>
+				<input autocomplete="off" id="user_email" name="user_email" size="30" type="text">
+				%{if !empty($email_error)}%<em class="warning">%{$email_error}%</em>%{/if}%
+			</div>
+		</li>
+
+
+		<li class="service_login">
+			<a href="#" target="_blank">趣友街服务条款</a>
+		</li>
+
+		<li class="zhuce_login">
+		<div><input type="submit" class="noprogress buttonover" value=""><span></span></div>
+		</li>
+	</ul>
+	<div class="linradio">
+		<input id="login_bind" name="bind" type="radio" value="login">
+		<label for="login_bind">我已有点名时间帐号（快速绑定）</label>
+	</div>
+</form>
+</div>
+</div>
+</div>
+%{template member/footer}%

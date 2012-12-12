@@ -1,0 +1,33 @@
+	%{template member/header}%
+		<div class="topshow">
+			<div class="topshowmenu">
+				<div class="topshowtitle">我的趣友街</div>
+					<ul class="topmenutabs">
+						<li><a %{if $type == 0}% class="current" %{/if}% href="%{''|make_url:member:me}%" title="个人资料">个人资料</a> </li>
+						<li><a %{if $type == 1}% class="current" %{/if}% href="%{''|make_url:member:password}%" title="密码修改">密码修改</a></li>
+						<li><a %{if $type == 2}% class="current" %{/if}% href="%{''|make_url:member:message}%" title="我的消息">我的消息</a></li>
+						<li><a %{if $type == 3}% class="current" %{/if}% href="%{''|make_url:member:friends}%" title="我的好友">我的好友</a></li>
+					</ul>
+				</div>
+			</div>
+		<div class="content">
+			%{if empty($user_friends)}%
+				还没有相关好友
+			%{else}%
+				%{loop $user_friends $friend}%
+					<div class="friend">
+						<span class="friend_avatar"><img src="%{IMAGES_URL}%noavatar_small.jpg"   border="0" alt=""></span>
+						<span>%{$friend->friend_name}%</span>
+						<span><a href="%{$friend->friend_id|make_url:member:send_message}%"><img src="%{IMAGES_URL}%send.gif" width="16" height="14" border="0" alt=""></a></span>
+					</div>
+				%{/loop}%
+			%{/if}%
+			
+		</div>
+		<div class="none" id="blog">
+			<div class="url new">
+				<input class="inputregoff" onfocus="this.className=&#39;inputregon&#39;" onblur="this.className=&#39;inputregoff&#39;" size="30" type="text" name="user_blogs[]" value="">
+				<a href="#more" class="add remove_blog">删除</a>
+			</div>
+		</div>
+%{template member/footer}%

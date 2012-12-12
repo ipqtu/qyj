@@ -1,0 +1,17 @@
+%{template about/header}%
+			<aside class="quarter">
+				<ul class="list-toc">
+					%{loop $about_product $key $product}%
+						<li>%{if $key == $cur_key}%<span>%{$product.product_name}%</span>%{else}%<a href="%{$key|make_url:about:product}%">%{$product.product_name}%</a>%{/if}%</li>
+					%{/loop}%
+				</ul>
+			</aside>
+			<article class="threequarter">
+				%{$cur_value.product_content}%
+			</article>	
+			<div style="clear:both;"></div>
+		</div>
+	</div>
+	<footer id="footer">© <a href="%{SITE_URL}%">趣友街</a> 2009-2012</footer>
+</div>
+</body></html>

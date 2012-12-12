@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="%{CSS_URL}%common.css" type="text/css" />
+<title>管理区域</title>
+</head>
+
+<body>
+<div id="man_zone">	
+	<form method="post" action="%{'email_method'|make_url:admin:email}%">
+		<p>
+			邮件发送方式:<input type="radio" name="email_method" value="0" checked>SMTP (注:更多发送方式等待添加)
+		</p>
+		<input type="submit" value='修改'>
+	</form>
+</div>
+</body>
+</html>
+%{if !empty($alert_info)}%
+<script type="text/javascript">
+<!--
+	alert("%{$alert_info}%");
+//-->
+</script>
+%{/if}%

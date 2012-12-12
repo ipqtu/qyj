@@ -1,0 +1,91 @@
+%{template photo/header}%
+        <div id="top_nav">
+        	<ul>
+            	<li><a href="%{0|make_url:photo:index}%">热门</a></li>
+                <li><a href="%{1|make_url:photo:index}%">最新</a></li>
+                <li><a href="%{2|make_url:photo:index}%">随机</a></li>
+            </ul>
+            <div id="nav_type_but" class="type_but">分类</div>
+            <div class="type" id="nav_type">
+                <ul>
+                   %{loop $photo_type $key $value}%
+						<li><a href= '%{$key|make_url:photo:type}%' >%{$value}%</a></li>
+                   %{/loop}%
+                </ul>
+           </div>
+        </div>
+     </div>
+     <div id="main">
+		<!--第一行-->
+     		%{php $style=$first_style}%
+			%{php $photos=$first_photos}%
+			%{template photo/style}%
+        <!--第二行-->
+			%{if !empty($seconde_photos)}%
+				%{php $style=$seconde_style}%
+				%{php $photos=$seconde_photos}%
+				%{template photo/style}%
+			%{/if}%
+       <!--第三行-->
+			%{if !empty($third_photos)}%
+				%{php $style=$third_style}%
+				%{php $photos=$third_photos}%
+				%{template photo/style}%
+			%{/if}%
+      <div class="more">
+      	<a href="#">查看更多</a>
+      </div>  
+  </div>
+  	%{template photo/footer}%
+<div id="bigDiv"></div>
+<!--登陆框-->
+%{if $user_login == 0}%
+<div class="message_box" id="login_box">
+	<div class="close"><img src="%{IMAGES_URL}%close.gif" alt="close" /></div>
+	<h4>用户登录</h4>
+	<div id="user_login">
+    	<form  action="/member/login" method="post" >
+        	<label for="userName" class="loginLable"><span>用户名</span><input type="text" value="" name="user_login" class="userName"/></label>
+            <label for="password" class="loginLable"><span>密码</span><input type="password" value="" name="user_pass" class="password" /></label>
+            <label><input type="submit" class="submit" value="登陆" /></label>
+        </form>
+    </div>
+    <div id="renren">
+    	<h4>用人人账户登录</h4>
+        <div><a href="#"><img src="%{IMAGES_URL}%renren.gif" alt="人人账户登陆" /></a></div>
+    </div>
+</div>
+%{/if}%
+<!--上传框-->
+<div class="message_box" id="upload_box">
+	<div class="close"><img src="%{IMAGES_URL}%close.gif" alt="close" /></div>
+	<h4>上传作品</h4>
+    <div id="upload_detail">
+    	<div id="upload_detail_img">图片预览</div>
+        <div id="upload_detail_right">
+        	<form action="%{''|make_url:photo:upload}%" method="POST" enctype="multipart/form-data">
+            	<p>上传图片</p>
+            	<p><input type="file" id="imgSrc" name="photo"/></p>
+            	<p>标题</p>
+                <p><input type="text" value=""  name="title"/></p>
+                <p>描述</p>
+                <textarea name="describe" ></textarea>
+                <div class="type_but" id="upload_type_but">分类</div>
+            		<div class="type" id="upload_type">
+                    <ul>
+						%{loop $photo_type $key $value}%
+							<li>%{$value}%</li>
+                        %{/loop}%
+                    </ul>
+           			</div>
+                 <p><input type="submit" class="submit" value="上传" /></p>
+            </form>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+</div>
+</div> 
+<script src="%{JS_URL}%jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="%{JS_URL}%main.js" type="text/javascript"></script>   
+</body>
+</html>

@@ -1,0 +1,25 @@
+%{template bk/header}%
+<article>
+	<header>
+      <h1>%{$bk_result->title}%</h1>
+		  <div style="margin-left:30px;">%{$bk_result->author}%&nbsp;发表于：%{$bk_result->ctime|ftime:Y-m-d}% <span style="float:right;">访问(%{$bk_result->call_num}%)&nbsp;留言(%{$bk_result->leave_num}%)&nbsp;顶(%{$bk_result->good_num}%)&nbsp;踩(%{$bk_result->bad_num}%)</span></div>
+    </header>
+    <section id="bk_content">
+		<div>%{$bk_result->content}%</div>
+		<div id="dc">
+			<span class="good"><a href="" >顶</a></span>
+			<span class="bad"><a href="" >踩</a></span>
+		</div>
+     </section>
+	 <section>
+		<div></div>
+		<div>
+			<form method="post" action="">
+				%{file $leave_html}%
+				<input type="submit" value="提交">
+			</form>
+		</div>
+	 </section>
+</article>
+%{file $list_leave_html}%
+%{template bk/footer}%

@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<link rel="stylesheet" href="%{CSS_URL}%common.css" type="text/css" />
+<title>管理区域</title>
+</head>
+<body>
+<div id="man_zone">		
+	<table width="99%" border="0" align="center"  cellpadding="3" cellspacing="1" class="table_style">
+	<tr>
+		<td class="left_title_1">app</td>
+		<td class="left_title_1">app名称</td>
+		<td class="left_title_1">app描述</td>
+		<td class="left_title_1">app状态</td>
+		<td class="left_title_1">app管理</td>
+	</tr>
+	%{loop $apps_state $app $app_state}%
+		<tr>
+			<td width="10%">%{$app}%</td>
+			<td width="20%">%{$all_app.$app}%</td>
+			<td width="30%">%{$apps_describe.$app}%</td>
+			<td width="10%">%{if $app_state}%<font color="#66FF00">正常运行</font>%{else}%<font color="#FF0000">停止运行</font>%{/if}%</td>
+			<td width="20%">%{if $app_state}%[<a href="%{$app|make_url:admin:system:app_close}%"><font color="#FF0000">关闭</font></a>]%{else}%[<a href="%{$app|make_url:admin:system:app_open}%"><font color="#66FF00">开启</font></a>]%{/if}%</td>
+		</tr>
+	%{/loop}%
+	</table>
+</div>
+</body>
+</html>

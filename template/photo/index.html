@@ -1,0 +1,103 @@
+%{template photo/header}%
+<div id="main">
+		<!--第一行-->
+     		%{php $style=$first_style}%
+			%{php $photos=$first_photos}%
+			%{template photo/style}%
+        <!--第二行-->
+			%{if !empty($seconde_photos)}%
+				%{php $style=$seconde_style}%
+				%{php $photos=$seconde_photos}%
+				%{template photo/style}%
+			%{/if}%
+       <!--第三行-->
+			%{if !empty($third_photos)}%
+				%{php $style=$third_style}%
+				%{php $photos=$third_photos}%
+				%{template photo/style}%
+			%{/if}%
+	</div>
+	%{if $more_photos}%
+		<div class="more">
+			<div id="hidden_photo_num">%{$all_photo_num}%|%{$type}%|%{''|make_url:photo:index_ajax}%</div>
+			<a id="index_more">查看更多</a>
+		</div>  
+	%{/if}%
+  	%{template photo/footer}%
+
+<div class="message_box" id="active">
+	<div class="close"><img src="%{IMAGES_URL}%close.gif" alt="close"></div>
+	<h1>“广大驾校杯”矿大春季照片展</h1>
+    <div class="active_left">
+    	<p>活动简介：</p>
+        <p class="b">清明出游，是否留下了难以忘怀的回忆；校园飞舞的樱花，是否也曾飘过你的脸颊，融入你的记忆？捕捉精彩瞬间，留住春天的记忆。<span class="red">“矿大春季照片展”</span>现面向<strong>全校征集照片</strong>，分享你与春天的故事，同时获得<strong>高额现金奖励</strong>。中国矿业大学校学生会联合趣友街网络为同学们创造一个展示自己照片的舞台，提供与他人进行交流的机会，让更多的人分享自己的出行经历，分享对春天的感悟.</p>
+        <p>照片征集：</p>
+        <p class="b">登陆<a href="http://www.quyoujie.com/photo/"><strong>www.quyoujie.com/photo</strong></a>上传你的照片,我们将根据同学们的
+点击<strong>喜欢</strong>的次数来决定最终的获奖名单获得现金大奖，优秀照片将得
+到在二食堂广场集中展出的机会。</p>
+        <p>照片要求：</p>
+        <p>一切关于这个春天的照片，风景，人物，或是出游留念，随手乱拍。
+重要的是她真的打动了你~</p>
+<p class="b"></p><p></p><p></p><p></p><p>活动赞助：<a href="http://www.quyoujie.com/photo/gd/">广大驾校</a></p>
+ <p>活动主办：中国矿业大学学生会</p>
+    </div>
+    <div class="active_right">
+    	<p>奖项设置：</p>
+        <table>
+            <tbody><tr>
+                <td width="55px">一等奖</td>
+                <td>一名</td>
+                <td>奖金<span class="red">300元</span>+星梦个人写真一套</td>
+            </tr>
+            <tr>
+                <td>二等奖</td>
+                <td>两名</td>
+                <td>奖金<span class="red">100元</span>+星梦个人写真一套</td>
+            </tr>
+            <tr>
+                <td>三等奖</td>
+                <td>三名</td>
+                <td>奖金<span class="red">50元</span>+星梦写真优惠卡</td>
+            </tr>
+            <tr>
+                <td>幸运奖</td>
+                <td>一名</td>
+                <td>奖金<span class="red">100元</span>+星梦写真优惠卡</td>
+            </tr>
+            <tr>
+                <td>分享奖</td>
+                <td>两名</td>
+                <td>奖金<span class="red">50元</span>+星梦写真优惠卡</td>
+            </tr>
+            <tr>
+                <td>参与奖</td>
+                <td>若干名</td>
+                <td>小礼品</td>
+            </tr>
+        </tbody></table>
+        <p>评奖标准：</p>
+        <p><font color="#FF0000">第一阶段:网上投票遵循目前的投票方式，选取前30位入围。由专业评委从网站上传的照片中选出票数未达标准但特别优秀的20张作品，也参加入围。</font></p>
+		<p><font color="#FF0000">第二阶段:50张照片参加最终的评委评审。每一个评委对每一张图片进行打分，由最终得分确定得奖情况。我们将邀请最具权威的人士参加最终的评审工作，保证评奖的公平性，及合理性。</font></p>
+        <p>所有上传照片的人均有机会随机获得幸运奖。</p>
+        <p class="b">分享照片或活动链接至人人的用户将有机会获得我们的分享奖。</p>
+		<p>奖品支持：<a href="http://www.quyoujie.com/photo/xm/">星梦摄影工作室</a></p>
+        <p>活动协办：趣友街网络</p>
+    </div>
+</div>
+</div> 
+<script src="%{JS_URL}%jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="%{JS_URL}%main.js" type="text/javascript"></script>
+%{if $is_first}%
+	<script type="text/javascript">
+	<!--
+			bigDivShow();  
+			setTimeout(function(){$("#active").fadeIn();},500);
+			$(".close").click(function(){$("#active").fadeOut();
+			setTimeout(function(){
+			$("#bigDiv").css("display","none");},500);
+		});
+	//-->
+	</script>
+%{/if}%
+</body>
+</html>

@@ -1,0 +1,100 @@
+%{template photo/header}%
+	<div id="main">
+     	<div class="main_left left clearfix">
+        	<div id="ture_img"><img src="%{HTML_UPLOAD_URL}%%{$photo_url}%" /></div>
+            <div id="review">
+            	<form action="%{$id|make_url:photo:photo}%" method="post">
+                <img class="user" src="%{$user_avatar|get_user_avatar:small}%" id="review_user_pic" />
+                <textarea id="review_text" name="content"></textarea>
+                <input type="submit" value="评论" class="submit" id="review_sub" />
+                </form>
+                <ul>
+					%{loop $photo_leave_info $value}%
+                    <li>
+						<div class="leave_image">
+							<span><a href='%{$value.photo_leave_author_id|make_url:photo:user}%'>
+								<img class="leave_avatar" src='%{if empty($value.author_info.user_avatar)}%%{$value.photo_leave_author_id|get_user_avatar:small}%%{else}%%{$value.author_info.user_avatar|get_user_avatar:small}%%{/if}%' width="48px" height="48px"/> 
+							</a></span>
+							<span><a href='%{$value.photo_leave_author_id|make_url:photo:user}%'>%{$value.photo_leave_author}%</a></span>
+						</div>
+						<div class="leave_content">
+							<div class="leave_content_top">
+								<span class="floor">
+									%{template.loop.photo_leave_info.loop_num}%楼
+								</span>
+								<span class="ctime">发表于%{$value.photo_leave_ctime|ftime:Y-m-d H:i:s}%</span>
+								<span class="replay" onclick='getElementById("replay_leave_%{$value.id}%").style.display="block";'>
+									回复
+								</span>
+							</div>
+							<div class="leave_content_center">
+								%{$value.photo_leave_content}%
+							</div>
+							<div id="replay_leave_%{$value.id}%" style="display:none;">
+								<form method="post" action="">
+									<textarea name="content" style="margin-top:10px;height: 36px;margin-left: 20px;margin-right: 0px;width: 676px;border: #65C1CF solid 1px;"></textarea> 
+									<input type="hidden" name="replay_id" value="%{$value.id}%">
+									<input type="submit" value="回复" class="submit" style="margin-top:10px;" />
+								</form>
+							</div>
+						</div>
+					</li>
+					%{/loop}%
+                </ul>
+            </div>
+        </div>
+        <div class="main_right">
+			<div id="likeShare">
+				<div style="display:none;" id="hidden_photo_id">%{''|make_url:photo:like}%|%{$id}%|%{$interest_num}%|%{$photo_author_id}%</div>
+            	<div class="type_but" id="like">喜欢(%{$interest_num}%)</div>
+            </div>
+			<div id="photo_info">
+				<h2>作品介绍</h2>
+				<hr/>
+				<span>名&nbsp;&nbsp;称:&nbsp;&nbsp;%{$photo_name}%</span><br/>
+				<span>作&nbsp;&nbsp;者:&nbsp;&nbsp;<a href="%{$photo_author_id|make_url:photo:user}%">%{$photo_author}%</a>
+				<a id="add_friends" title="加为好友">
+					<img src="%{IMAGES_URL}%user_add.gif" width="15" height="15" border="0" alt="加为好友">
+				</a>
+				<a href="%{$photo_author_id|make_url:member:send_message}%"  title="发信息给我吧"><img src="%{IMAGES_URL}%send.gif" width="16" height="14" border="0" alt="发信息给我吧"></a>
+				</span><br/>
+				<span>浏&nbsp;&nbsp;览:&nbsp;&nbsp;%{$call_num}%次</span><br />
+                <span>发布于:&nbsp;&nbsp;%{$photo_ctime|ftime:Y/m/d/}%</span><br />
+				<span>作品介绍:</span><br />
+				<span>&nbsp;&nbsp;&nbsp;%{$photo_content}%</span>
+			</div>
+			
+			<div id="user_photos">
+				<h2>TA的其他作品</h2>
+				<hr/>
+				%{loop $author_other_photos $one_photo}%
+					<div>
+						<a href='%{$one_photo.id|make_url:photo:photo}%'>
+							<img src='%{HTML_UPLOAD_URL}%%{$one_photo.photo_url|get_image_url:2}%' border='0' alt='%{$one_photo.photo_name}%'>
+						</a>
+					</div>
+				%{/loop}%
+				<div>
+					<a href="%{''|make_url:photo:gd}%">
+						<img src='%{IMAGES_URL}%gd.gif' border='0' alt=''>
+					</a>
+					<a href="%{''|make_url:photo:xm}%">
+						<img src="%{IMAGES_URL}%xmx.jpg" width="263" height="152" border="0" alt="">
+					</a>
+				</div>
+			</div>
+        </div>
+     </div>
+  %{template photo/footer}%
+</div> 
+<script src="%{JS_URL}%jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="%{JS_URL}%main.js" type="text/javascript"></script>   
+</body>
+</html>
+%{if !empty($error)}%
+	<script type="text/javascript">
+	<!--
+		alert("%{$error}%");
+	//-->
+	</script>
+%{/if}%
