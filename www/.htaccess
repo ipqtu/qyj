@@ -1,0 +1,7 @@
+#------------- .htaccess ----------------
+
+RewriteEngine On
+RewriteBase /
+RewriteRule ^([^\.]*)$ index.php
+RewriteRule ^[^j][^s]([^\.]*\.html)$ index.php
+#------------- .htaccess ----------------
