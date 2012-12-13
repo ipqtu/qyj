@@ -1,0 +1,183 @@
+@charset "utf-8";
+/* CSS Document */
+#main div{
+	position:relative;
+	overflow:hidden;
+}
+#main div p{
+	position:absolute;
+	bottom:0;
+	height:30px;
+	line-height:30px;
+	color:#FFF;
+	background:#666;
+	width:100%;
+	padding-left:10px;
+	filter:Alpha(opacity=70);
+	-moz-opacity:0.7;
+	opacity:0.7;
+}
+.t{
+	margin-top:20px;
+}
+.b{
+	margin-bottom:20px;
+}
+.r{
+	margin-right:20px;
+}
+.left{
+	float:left;
+}
+.clearfix{
+	display:block;
+	clear:both;
+}
+.large{
+	width:560px;
+	height:420px;
+}
+.large img{
+	width:560px;
+}
+.wide{
+	width:560px;
+	height:200px;
+}
+.wide img{
+	width:560px;
+}
+.small{
+	width:270px;
+	height:200px;
+}
+.small img{
+	width:270px;
+}
+.tall{
+	width:270px;
+	height:420px;
+}
+.tall img{
+	height:420px;
+}
+/*-----------------over------------*/
+#upload{
+	background:#65C1CF;
+	height:200px;
+}
+#upload h3{
+	color:#FFF;
+	font-size:35px;
+	height:60px;
+	line-height:60px;
+	text-align:center;
+	margin-top:40px;
+	cursor:pointer;
+}
+#upload a{
+	color:#FFF;
+	text-align:center;
+	display:block;
+}
+.more a{
+	height:28px;
+	line-height:28px;
+	width:140px;
+	margin:50px auto;
+	text-align:center;
+	background:#65C1CF;
+	cursor:pointer;
+	color:#FFF;
+	display:block;
+	letter-spacing:4px;
+}
+/*------------myindex----------------------*/
+h2{
+	font-size:22px;
+	color:#666;
+	text-align:left;
+}
+.my_img,.my_message{
+	margin-top:20px;
+	margin-bottom:20px;
+	width:1200px;
+}
+.my_img li{
+	float:left;
+	width:370px;
+	margin:5px 10px 5px 0;
+	overflow:hidden;
+	text-align: left;
+	color:#8B8B8B;
+	height: 140px;
+}
+
+.my_message li{
+	color:#333;
+}
+.my_message li a{
+	padding:0 10px;
+	color:#65C1CF;
+}
+.user_list_photo{
+	
+}
+.user_list_photo img{
+	float:left;	
+}
+.user_list_photo span{
+	margin-left:10px;
+}
+
+.user_list_photo textarea{
+	margin-left:20px;
+	width: 187px;
+	height: 55px;
+}
+.user_list_photo input[type="submit"] {
+	margin-top:5px;
+	width: 80px;
+}
+/*------------------------sideCss-------------------------------*/
+.main_right{
+	width:250px;
+	float:right;
+	margin-top:50px;
+}
+.side_user{
+}
+.side_user img{
+	margin:5px;
+	float:left;
+	width:100px;
+	height:100px;
+}
+.side_user span{
+	color:#666;
+	font-size:14px; 
+	text-shadow:#B3B8B8 0px 0px 1px;
+}
+#active h1{
+	font-size:24px;
+	text-align:center;
+	padding:20px 0;
+}
+#active p{
+	padding:3px 0;
+	color:#666;
+}
+#active .red{
+	color:#F00;
+}
+.active_left{
+	float:left;
+	width:350px;
+	padding:0 10px 20px 30px;
+	border-right:#CCC 1px solid;
+}
+.active_right{
+	width:300px;
+	float:right;
+	padding:0 30px 20px 10px;
+}

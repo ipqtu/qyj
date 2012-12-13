@@ -1,0 +1,158 @@
+@charset "utf-8";
+/* CSS Document */
+#main div{
+	position:relative;
+	
+}
+.clearfix{
+	display:block;
+	clear:both
+}
+
+
+/*------------myindex----------------------*/
+.main_left{
+	margin-top:20px;
+	width:800px;
+	float:left;
+}
+#photo_name h2 {
+	text-align: left;
+}
+#ture_img img{
+	width:800px;
+}
+
+#review{
+	margin:20px 0;
+}
+#review li{
+	min-height:70px;
+	clear:both;
+	padding:10px 0;
+}
+#review_text{
+	height: 68px;
+	width: 743px;
+	border:#65C1CF solid 1px;
+}
+#review_sub{
+	margin:10px auto auto 65px;
+}
+.leave_image{
+	margin:0 auto;
+	width:70px;
+	float:left;
+}
+.leave_image span{
+	width:100%;
+	display:block;
+	text-align: center;
+}
+.leave_image span a{
+	padding:0px 0px;
+}
+.leave_image .leave_avatar{
+	margin:auto auto;
+}
+.leave_content{
+	float:left;
+	width:700px;
+}
+.leave_content_top{
+	border-bottom:1px solid #808080;
+}
+.leave_content_top .floor{
+	margin-left:8px;
+}
+.leave_content_top .ctime{
+	margin-left:20px;
+}
+.leave_content_top .replay{
+	margin-left:20px;
+}
+.leave_content_center{
+	margin-left:20px;
+	margin-top:15px;
+}
+.leave_content_center .replay_leave_content{
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-bottom: 10px;
+	padding-left: 10px;
+	border: 1px gray dotted;
+}
+.leave_content_center .replay_leave_content p{
+	text-indent: 10px;
+}
+
+/*------------------------sideCss-------------------------------*/
+.main_right{
+	width:250px;
+	float:right;
+	margin-top:20px;
+	position:relative;
+}
+.side_user{
+	height:50px;
+}
+
+.side_user img{
+	margin-right:15px;
+	float:left;
+}
+.side_user span{
+	color:#666;
+	font-size:14px; 
+	padding:8px 0;
+}
+#photo_info{
+	font-family:微软软黑;
+	color:#666;
+	font-size:14px; 
+	padding:8px 0;
+}
+#likeShare{
+	height:48px;
+	font-size:18px;
+	position:relative;
+}
+
+#like{
+	float:left;
+	padding:0 10px;
+}
+#share{
+	float:right;
+}
+#share_place{
+	position:absolute;
+	right:0px;
+	top:165px;
+	width:76px;
+
+}
+#share_place li{
+	height:36px;
+	line-height:36px;
+	
+}
+
+#user_photos{
+	color: #666;
+
+}
+
+#user_photos div {
+	margin-top: 10px;
+	text-align: center;
+	
+}
+hr {
+	margin-top: 2px;
+	margin-bottom: 3px;
+}
+textarea {
+	background-color: #F4F4F4;
+}
+

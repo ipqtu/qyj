@@ -1,0 +1,238 @@
+body {
+	font: 12px/1.5 arial; background: #d8e0e3; color: #333
+}
+* {
+	padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px
+}
+img {
+	border-bottom: 0px; border-left: 0px; border-top: 0px; border-right: 0px
+}
+li {
+	list-style-type: none; list-style-image: none
+}
+.clear {
+	clear: both
+}
+h1 {
+	font-size: 14px
+}
+h2 {
+	font-size: 400%;
+	text-align: center;
+}
+h3 {
+	font-size: 14px
+}
+h4 {
+	font-size: 14px
+}
+a {
+	outline-style: none; outline-color: invert; outline-width: medium; color: #bd3b07; text-decoration: none
+}
+a:hover {
+	color: #902900; text-decoration: none
+}
+em {
+	font-style: normal
+}
+
+/*---------top----*/
+.top {
+    padding: 2px 30px 0px 60px;
+    height: 28px;
+    line-height: 20px;
+    font-size: 13px;
+}
+.top span{
+    height:48px;
+    margin-left:10px;
+}
+.top .site_nav {
+    float: left;
+}
+.top li{
+    display: inline;
+    color: #7e7f7d;
+}
+.top li a{
+    padding: 0 0px;
+}
+#my_app .none{
+    display: none;
+}
+#my_app ul.block {
+    display: block;
+    position: absolute;
+    top: 16px;
+    right: 0px;
+    width: 70px;
+    border: 1px solid #7ac142;
+    padding-top:5px;
+    height: 100px;
+    z-index:1000;
+    text-align:center;
+}
+#my_app .block li{
+    display: block;
+    height: 22px;
+}
+#my_app{
+    position: relative;
+}
+.top .my_info{
+    padding: 2px 30px 0px;
+    height: 95px;
+    float:right;
+    font-size: 13px;
+    _font-size: 12px;
+}
+/*---------top-------*/
+
+/*---------header---------*/
+.header-new {
+	background: url(head-bg.png) repeat-x;
+	background-color: #999;
+	margin-bottom: 15px;
+}
+
+.logo {
+	height: 70px;
+	position: relative;
+}
+.wrap {
+	width: 960px;
+	margin: 0 auto;
+}
+
+.ui-nav-container {
+	overflow: hidden;
+}
+
+.ui-nav-container .ui-nav-item-current {
+	background: none;
+}
+.ui-nav-container .ui-nav-item {
+	float: left;
+	width: 160px;
+	color: white;
+	background: #5e8074;
+	position: relative;
+}
+li {
+	vertical-align: middle;
+}
+.ui-nav-container .ui-nav-item-current a.m-menu {
+	padding-top: 6px;
+	height: 29px;
+	line-height: 29px;
+	font-weight: bold;
+}
+.ui-nav-container .ui-nav-item-current a.m-menu, .ui-nav-container .ui-nav-item-current a.m-menu:hover {
+	background: #eee;
+	color: #333;
+}
+.ui-nav-item .ui-new {
+	position: relative;
+}
+.ui-nav-item .new {
+	position: absolute;
+	top: 12px;
+	left: 100px;
+}
+.new, .hot {
+	background: url("newandhot.png") no-repeat 0 0 transparent;
+	width: 21px;
+	height: 11px;
+	text-indent: -9999px;
+}
+.ui-nav-container .ui-nav-item a.m-menu {
+	color: white;
+	display: block;
+	height: 32px;
+	line-height: 32px;
+	padding-top: 3px;
+	text-align: center;
+	font-size: 14px;
+	text-decoration: none;
+}
+.ui-nav-container .ui-nav-item-current a.m-menu, .ui-nav-container .ui-nav-item-current a.m-menu:hover {
+	background: #eee;
+	color: #333;
+}
+
+.ui-nav-container .ui-nav-item a.m-menu:hover{
+	background:#333;
+}
+.ui-nav-container .ui-nav-item-current a.m-menu,.ui-nav-container .ui-nav-item-current a.m-menu:hover{
+	background:#eee;
+	color:#333;
+}
+/*------------------*/
+
+/*-------main------*/
+#wrapper {
+	margin: 0px auto; 
+	width: 960px;
+	min-height: 455px;
+	font-size:14px;
+}
+/*-------mian------*/
+#wrapper span{
+	font-size:200%;
+	font-weight: 900;
+}
+#wrapper p{
+	margin-top:20px;
+	font-size: 33px;
+}
+#wrapper input[type="text"] {
+	height: 40px;
+	width: 400px;
+	font-size: 30px;
+}
+#wrapper select {
+	height: 40px;
+	width: 80px;
+	font-size: 25px;
+}
+#wrapper textarea{
+	margin-left: 90px;
+	width: 800px;
+	height: 126px;
+}
+#wrapper input[type="submit"] {
+	height: 40px;
+	width: 180px;
+	font-size: 20px;
+}
+#wrapper input[type="reset"] {
+	height: 40px;
+	width: 120px;
+	font-size: 20px;
+}
+#public_over_tips {
+	text-align: center;
+	padding-top: 150px;
+}
+/*-------foot------*/
+#footer {
+	margin-top: 30px; background: #fff; border-top: #dcdbd6 1px solid
+}
+.f_i {
+	padding-bottom: 30px;
+	line-height: 20px;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 15px;
+	margin: 0px auto;
+	width: 960px;
+	margin: 0px auto;
+}
+.foot_l {
+	float: left;
+	color: #999;
+}
+.foot_r {
+	float: right;
+}
+/*-------foot------*/

@@ -1,0 +1,255 @@
+@charset "utf-8";
+body{
+	background-color:#ecebe8;
+	width:100%;
+	margin:0px 0px;
+}
+a{
+	text-decoration: none;
+}
+#header{
+	background:url(/images/action/head_bg.gif) repeat-x;
+	height:74px;
+}
+
+#logo{
+	margin-left:150px;
+	width:134px;
+	height:74px;
+	float:left;
+}
+#nav{
+	margin:25px 0 auto 10px;
+	float:left;
+}
+#nav ul{
+	display:inline;	
+	list-style: none;
+}
+#nav li{
+	float:left;
+	background:url(/images/action/nav_bg.gif) no-repeat;
+	height:26px;
+	width:80px;
+	line-height:26px;
+	text-align:center;
+	margin:auto 5px;
+}
+#nav li a{
+	color:white;
+	font-size:14px;
+}
+#search{
+	float:right;
+	margin-top:25px;
+	width:220px;
+	height:29px;
+	background:url(/images/action/search_bg.gif) no-repeat;
+	position:relative;
+}
+#search input[type="text"] {
+	background: url(/images/action/search_bg.gif) no-repeat -20px -5px;
+	border: none;
+	width: 160px;
+	height: 20px;
+	margin-left: 15px;
+	margin-top: 5px;
+	color: white;
+}
+#search input[type="submit"]{
+	height:34px;
+	width:40px;
+	background:url(/images/action/search_bg.gif) no-repeat;
+	background-position:-180px 0;
+	border:none;
+	position:absolute;
+	top:0;
+	left:180px;
+}
+#login{
+	float:right;
+	margin: 28px 160px auto 30px;
+}
+#login a{
+	color: white;
+	font-size:14px;
+}
+
+#mian{
+	margin: 30px auto;
+	width: 960px;
+}
+
+
+
+#c_left{
+	float:left;
+	padding:0px;
+}
+
+
+#c_left .left_content{
+	 width:628px;
+	 background-color: white;
+	 background:url(/images/action/right_body_bg.jpg) repeat-y white;
+	 background-position: right;
+	 padding-top:20px;
+	 padding-left:40px;
+	 font-size: 13px;
+	 padding-bottom: 10px;
+}
+#c_left .left_content .left_nav {
+	text-align: center;
+	float: left;
+	font-size: 14px;
+}
+#c_left .left_content .left_nav a{
+	color: #9bb757;
+}
+
+#c_left .left_content .left_nav .h{
+	font-weight: 900;
+}
+
+#c_left .left_content .left_nav .s{
+	background-color: #9bb757;
+	color: white;
+}
+
+#c_left .left_content .left_nav .s a{
+	color: white;
+}
+
+#c_left .left_content .left_nav ul{
+	list-style: none;
+	padding-left: 0px;
+}
+
+#c_left .left_content .left_nav li{
+	margin-top:15px;	
+}
+
+#c_left .left_content .right_content {
+	float:left;
+	margin-left:60px;
+}
+
+#c_left .left_content .center_action{
+	width:150%;
+	margin-top:20px;
+	border-bottom: 1px silver dashed;
+	padding-bottom:20px;
+}
+
+#c_left .left_content .center_action .action_logo{
+	float:left;
+	width: 110px;
+	height: 150px
+}
+
+#c_left .left_content .center_action .action_logo img{
+	width: 110px;
+	height: 150px;
+}
+#c_left .left_content .center_action .action_info{
+	float:left;
+	margin-left:20px;
+	font-size:15px;
+	display:block;
+}
+#c_left .left_content .center_action .action_info h3{
+	margin-top:0px;
+	margin-bottom:4px;
+}
+#c_left .left_content .center_action .action_info h3 a{
+	color: #7A9439;
+}
+#c_left .left_content .center_action .action_info span{
+	display: block;
+	text-align: left;
+	margin-top:4px;
+}
+
+
+
+
+
+#c_right{
+	float:right;
+	width: 260px;
+}
+
+#c_right .right_head{
+	width:259px;
+	height:119px;
+	background: url(/images/action/right_head-bg.jpg) no-repeat;
+	margin-top:40px;
+	text-align: center;
+	line-height: 100px;
+	font-weight: 900;
+	font-size: 22px;
+}
+
+#c_right .right_head a{
+	color:white;
+}
+
+.right_body_content{
+	background:url(/images/action/right_body_bg.jpg) repeat-y white;
+	background-position: right;
+	width:260px;
+	margin-top: 20px;
+}
+.right_body_content .tag{
+	background: url(/images/action/right_tag.jpg) no-repeat;
+	width:266px;
+	height:30px;
+	float:right;
+	margin-right: 10px;
+}
+.right_var_contents{
+	margin-top:30px;
+	margin-bottom: 30px;
+}
+
+.right_var_content{
+	margin-left:10px;
+	margin-top:10px;
+	padding-bottom:10px;
+	padding-top:10px;
+	border-bottom: 1px #C0C0C0 dashed;
+	color:#6e6e6e;
+}
+.right_var_content a{
+	color:#b0cb66;
+
+}
+.right_var_content img{
+	float:left;
+}
+
+.right_var_content span{
+	display:block;
+	font-size:12px;
+	margin-left:60px;
+	margin-top:6px;
+}
+
+
+
+.clear{
+	clear:both;
+}
+.content_top{
+	width:100%;
+	height:14px;
+	background-color: white;
+}
+.content_top img{
+	float:right;
+}
+.content_bottom{
+	 width:100%;
+	 height:12px;
+	 background:url(/images/action/bottom_body_bg.jpg) repeat-x;
+}

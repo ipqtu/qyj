@@ -1,0 +1,68 @@
+.question{
+	padding-bottom:10px;
+	border-bottom:3px dashed white;
+}
+.question .q_content{
+	width:100%;
+	padding-bottom:30px;
+}
+.question .q_content .title{
+	text-align:left;;
+	font-size:16px;
+	background:url(/images/know/q.png) no-repeat;
+	padding-left:22px;
+	font-weight: bold;
+}
+.question .q_content .info{
+	margin-top:12px;
+	padding-left:20px;
+	font-size:12px;
+	text-align:left;;
+}
+.question .q_content p{
+	margin-top:12px;
+}
+ .good_answer{
+	padding-bottom:20px;
+}
+.public_answer{
+	margin-bottom:20px;
+}
+
+.answer{
+	margin-top:30px;
+}
+.answer h3{
+	margin-bottom:30px;
+}
+.answer_content{
+	width:94%;
+	margin-left:40px;
+	margin-bottom:5px;
+}
+.answer_item {
+	padding-bottom: 40px;
+	border-bottom:3px dashed white;
+}
+.answer_item .num{
+	float:left;
+	width:1%;
+}
+.answer_item .answer_str{
+	margin-left:20px;
+	float:left;
+	width:95%;
+}
+.answer_item .answer_author{
+	color:white;
+	margin-bottom:5px;
+	margin-top:0px;
+}
+.answer_item .answer_author a{
+	color:white;
+}
+.floor{
+	text-align:right;
+	margin-right: 20px;
+	margin-bottom:10px;
+}

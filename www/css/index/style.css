@@ -1,0 +1,101 @@
+@charset "utf-8";
+/* CSS Document */
+#main{
+	background-image:url(/images/index/background.png);
+	position::relative;
+	background-repeat:no-repeat;
+	width:1344px;
+	height:768px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:0;
+	}
+div#content{
+	position:relative;
+	width:1344px;
+	height:768px;
+	}
+a#black_car{
+	position:absolute;
+	top:35px;
+	left:10px;
+	z-index:1;
+}
+a#pink_car{
+	position:absolute;
+	top:635px;
+	left:225px;
+	z-index:1;
+}
+div#back{
+	width:1344px;
+	height:768px;
+	position:absolute;
+	background-color:white;
+	top:0px;
+	opacity:0.0;
+	z-index:-1;
+	}
+a#activities,
+a#spring,
+a#blog{
+	position:absolute;
+	display:block;
+	z-index:1;
+	}
+a#activities{
+	top:164px;
+	left:60px;
+	}
+a#spring{
+	top:3px;
+	left:556px;
+	}
+a#blog{
+	left:868px;
+	top:99px;
+	}
+div#main ul{
+	position:absolute;
+	top:750px;
+	width:244px;
+	left:600px;
+	}
+div#main ul li{
+	float:left;
+	color:#9E9198;
+	padding-right:7px;
+	}
+img#sign{
+	position:absolute;
+	top:325px;
+	left:627px;	
+	z-index:2;
+}
+div.tips{
+	padding-left:30px;
+	padding-right:30px;
+	width:236px;
+	height:192px;
+	background-image:url(/images/index/tipsbg.png);
+	position:absolute;
+	z-index:5;
+	padding-top:20px;
+	display:none;
+		}
+div.tips p{
+	width:236px;
+	}
+div#activ_tip{
+	left:550px;
+	top:270px;
+	}
+	
+div#spring_tip{
+	left:850px;
+	top:100px;
+	}
+div#blog_tip{
+	left:1050px;
+	top:200px;
+	}
