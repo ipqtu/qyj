@@ -21,21 +21,13 @@ class LEAVE_MODEL extends Table {
 	static $PHP_check_big = 2;
 	static $PHP_check_equal = 3;
 	
-	private $tag = "";
-	
 	private $table = "";
-	
-	private $exist = false;
 	
 	private $rn = "\r\n";
 	
 	private $in_html_file_dir = "";
 	
-	private $list_html_file_dir = "";
-	
 	private $deal_php_file_dir = "";
-	
-	private $list_php_file_dir = "";
 	
 	private $in_html_data_array = array ();
 	
@@ -47,48 +39,38 @@ class LEAVE_MODEL extends Table {
 	
 	private $in_html_content = "";
 	
-	private $list_html_template = "default";
-	
 	private $deal_php_content = "";
 	
-	private $list_php_content = "";
-	
-	static function get_object($table_name, $tag, $list_template_name = "default") {
+	static function get_object($table_name="") {
 		if (! is_object ( self::$myself_object )) {
-			self::$myself_object = new self ( $table_name, $tag, $list_template_name );
+			self::$myself_object = new self ( $table_name );
 		}
 		return self::$myself_object;
 	}
 	
-	public function __construct($table_name, $tag, $list_template_name = "default") {
+	public function __construct($table_name) {
 		parent::__construct ( $table_name );
-		$this->tag = $tag;
 		$this->table = $table_name;
-		$this->in_html_file_dir = ROOT . '/model/leave/html/leave_in_html' . $this->tag . ".html";
-		$this->list_html_file_dir = ROOT . '/model/leave/template/' . $list_template_name . ".html";
-		$this->deal_php_file_dir = ROOT . '/model/leave/php/leave_deal_php_' . $this->tag . ".php";
-		$this->list_php_file_dir = ROOT . '/model/leave/php/leave_list_php_' . $this->tag . ".php";
 	}
 	
 	/**
 	 * check file exist
 	 */
-	public function check_create() {
+	private function check_create() {
 		if (! file_exists ( $this->in_html_file_dir ))
 			return true;
 		if (! file_exists ( $this->deal_php_file_dir ))
 			return true;
-		if (! file_exists ( $this->list_php_file_dir ))
-			return true;
-		$this->exist = true;
 		return false;
 	}
 	
 	/**
 	 * 生成相关文件
 	 */
-	public function create_system() {
-		if (! $this->exist) {
+	public function create_system($template_type="default") {
+		$this->in_html_file_dir = ROOT . '/model/leave/html/leave_in_html' . $this->table . ".html";
+		$this->deal_php_file_dir = ROOT . '/model/leave/php/leave_deal_php_' . $this->table . ".php";
+		if ($this->check_create ()) {
 			//生成in_html
 			foreach ( $this->in_html_data_array as $data ) {
 				$this->in_html_content .= $this->make_in_html ( $data );
@@ -106,17 +88,12 @@ class LEAVE_MODEL extends Table {
 			if (! empty ( $this->db_php_data_array ))
 				$this->make_db_php ();
 			$this->write_file ( $this->deal_php_content, $this->deal_php_file_dir );
-			//生成list_php
-			$this->make_list_php ();
-			$this->write_file ( $this->list_php_content, $this->list_php_file_dir );
-			//生成list_html(可选)
-			$this->make_list_html ();
 		}
-		$result = array ();
-		$result ['in_html'] = $this->in_html_file_dir;
-		$result ['list_html'] = $this->list_html_file_dir;
-		$result ['deal_php'] = $this->deal_php_file_dir;
-		$result ['list_php'] = $this->list_php_file_dir;
+		$result = new stdClass ();
+		$result->in_html = $this->in_html_file_dir;
+		$result->deal_php = $this->deal_php_file_dir;
+		$result->list_html = ROOT . '/model/leave/template/' . $template_type . ".html";
+		$result->list_php = ROOT . '/model/leave/template/' . $template_type . ".php";
 		return $result;
 	}
 	
@@ -151,28 +128,7 @@ class LEAVE_MODEL extends Table {
 		$this->db_php_data_array ['db_var_array'] = $db_var_array;
 		$this->db_php_data_array ['db_append_array'] = $db_append_array;
 	}
-	
-	public function select_list_html($list_template_name) {
-		$this->list_html_template = $list_template_name;
-	}
-	
-	private function make_list_html() {
-		file_exists ( ROOT . '/model/leave/template/' . $this->list_html_template . ".html" ) ? "" : $this->list_html_template = "default";
-		$this->list_html_file_dir = ROOT . '/model/leave/template/' . $this->list_html_template . ".html";
-	}
-	
-	/**
-	 * 留言的列举
-	 */
-	private function make_list_php() {
-		$this->list_php_content .= '$page = isset($_GET["page"]) ? abs(intval($_GET["page"])) : 0;' . $this->rn;
-		$this->list_php_content .= '$leave_model_object = LEAVE_MODEL::get_object ( "' . $this->table . '", "' . $this->tag . "\" );\r\n";
-		$this->list_php_content .= '$all_leave_num = $leave_model_object->get_table_all_num();' . $this->rn;
-		$this->list_php_content .= '$leave_star_num = System::get_page_star_num($page, 10, $all_leave_num);' . $this->rn;
-		$this->list_php_content .= '$leave_all_result =$leave_model_object->get_all_value("ctime", $leave_star_num, 10);' . $this->rn;
-		$this->list_php_content .= '$leave_page_html =System::get_page_html($page, 10, $all_leave_num, $Object_url->get_url());' . $this->rn;
-		$this->list_php_content .= '$Object_template->assgin(array("leave_page_html"=>$leave_page_html,"leave_all_result"=>$leave_all_result))' . $this->rn;
-	}
+
 	
 	/**
 	 * 数组转换为html
@@ -266,7 +222,7 @@ class LEAVE_MODEL extends Table {
 	}
 	
 	private function write_file($str, $file, $html = "") {
-		$content = (empty ( $html )) ? "<?php\r\n//createTime:" . date ( 'Y-m-d H:i:s' ) . "\r\n defined ( 'IS_ME' ) or exit (); \r\n" .  "{$str}?>" : $str;
+		$content = (empty ( $html )) ? "<?php\r\n//createTime:" . date ( 'Y-m-d H:i:s' ) . "\r\n defined ( 'IS_ME' ) or exit (); \r\n" . "{$str}?>" : $str;
 		$file_hand = fopen ( $file, 'w' );
 		fwrite ( $file_hand, $content );
 		fclose ( $file_hand );

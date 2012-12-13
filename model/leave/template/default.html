@@ -1,2 +1,33 @@
-<br/>
-<br/>
+%{loop $leave_all_result $leave}%
+<div>
+	<div>
+		<div style="margin-left: 20px; float: left;">
+			<p style="margin-bottom: 5px;">%{template.loop.leave_all_result.loop_num}%.%{$leave->content}%</p>
+			<p style="color: #C0C0C0;">%{$leave->ctime|ftime:m月d日H:i}%&nbsp;&nbsp; 
+				<span style="color: #66CDFF; cursor: pointer;" onclick="document.getElementById('div%{template.loop.leave_all_result.loop_num}%').style.display='block';document.getElementById('replay_floor_%{template.loop.leave_all_result.loop_num}%').value=%{$leave->id}%;">回复</span>
+				%{if $_USER.user_id == FOUNDER_ID}%<span><a href="%{'leave_us'|make_url:about}%?del=%{$leave->id}%">删除</a></span>%{/if}%
+			</p>
+		</div>
+		<div style="clear: both;"></div>
+	</div>
+	%{loop $replay_leave.$leave->id $replay}%
+	<div style="border-top: 1px dashed #D0D0D0; margin-left: 40px; padding-top: 10px;">
+		<div style="float: left;">
+			<p style="margin-bottom: 5px;">回复%{$replay->replay_floor}%楼:&nbsp;&nbsp;%{$replay->content}%</p>
+			<p style="color: #C0C0C0;">
+				%{$replay->ctime|ftime:m月d日H:i}%&nbsp;&nbsp;<span style="color: #66CDFF; cursor: pointer;" onclick="document.getElementById('div%{template.loop.leave_all_result.loop_num}%').style.display='block';document.getElementById('replay_floor_%{template.loop.leave_all_result.loop_num}%').value=%{$replay->id}%;">回复</span>
+				%{if $_USER.user_id == FOUNDER_ID}%<span><a	href="%{'leave_us'|make_url:about}%?del=%{$replay->id}%">删除</a></span>%{/if}%
+			</p>
+		</div>
+		<div style="clear: both;"></div>
+	</div>
+	%{/loop}%
+	<div id="div%{template.loop.leave_all_result.loop_num}%" style="display: none; margin-left: 20px;">
+		<form method="post" action="?replay" style="margin-left: 30px; margin-top: 10px;">
+		<input type="hidden" name="replay_id" id="replay_floor_%{template.loop.leave_all_result.loop_num}%" value="">
+		<p style="margin-bottom: 0px;"><textarea name="content" style="height: 46px; width: 798px;"></textarea></p>
+		<p><input type="submit" value="提交" style="width: 100px; height: 30px;"></p>
+		</form>
+	</div>
+</div>
+%{/loop}%
